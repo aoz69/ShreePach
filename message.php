@@ -1,8 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<style>
+ #tabble {
+   text-align: center;
+   font-size: xx-large;
+   border-collapse:separate; 
+  /* border-spacing: 70px 0; */
+ }
+
+ #tabble, th, td {
+  border: 2px solid black;
+  font-weight: bold;
+}
+
+#del{
+  background-color: white;
+  color: brown;
+  text-decoration: none;
+}
+
+#del:hover{
+  background-color: brown;
+  color: white;
+  font-weight: bold;
+}
+
+#mes{
+  margin-left: 20px
+}
+
+th {
+  color: red;
+ 
+}
+</style>
+
+
+
+
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="CSS.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,17 +71,49 @@ session_start();
 ?>
 
 <br>
-<!-- Goes to editNws page -->
+<!-- Goes to editNews page -->
 <a href="editMessage.php">
-     <input  name="submit" value = "Alter messages" type="submit"/>
-   </a>
+  <input  name="submit" value = "Add new messages" type="submit" id="mes"/>
+</a>
+<br><br>
 <center>
+<table id = "tabble">
+<thead>
+  <tr>
+    <th>
+      S.N
+    </th>
+    <th>
+      Headings
+    </th>
+    <th>
+      Message
+    </th>
+    <th>
+    Action
+    </th>
+  </tr>
+</thead>
 
-<center>
-</body>
-</html>
+<tbody>
 
+</tbody>
 
 <?php
- 
+
+ $connection = mysqli_connect("localhost","root",""); //connect database
+ $db = mysqli_select_db($connection,"web");
+ $sel = "select * from announcement";
+ $query = mysqli_query($connection, $sel);
+ $data = mysqli_num_rows($query);
+
+  while($res = mysqli_fetch_array($query)){
+    echo "<tr><td>" . $res["id"] . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "<td><a href= 'deleteMessage.php?di=$res[id]' id='del'>Remove </td>". "</td></tr>" ;
+}
 ?>
+</table>
+
+
+</center>
+</body>
+</html>

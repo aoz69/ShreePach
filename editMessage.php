@@ -31,14 +31,14 @@
 
 <br>
 <br>
-<form action = "addMessage.php" method = "post" >
+<form action = "addMessage.php" method = "post"  >
   <div class="form-group">
-    <label for="exampleFormControlInput1">Heading</label>
-    <input name = "Heading" class="form-control" id="exampleFormControlInput1" placeholder="News Heading here" required> 
+    <label for="exampleFormControlInput1"  >Heading</label>
+    <input name = "Heading" class="form-control" id="exampleFormControlInput1"  placeholder="News Heading here"   required> 
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">News Description</label>
-    <textarea  name = "Message" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="News Description here"></textarea>
+    <textarea name = "Message" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="News Description here"></textarea>
   </div>
   <input  type= "submit" name= "submit"  value = "submit"></input>
 </form>
@@ -60,13 +60,5 @@
 
 session_start(); //session start function
 ?>
-
-
 </body>
 </html>
-
-
-<?php
-
-
-?>
