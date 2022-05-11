@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">WUC</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,10 @@ session_start();
 ?>
 
 <br>
-<input type="submit" name="submit" value = "Alter messages"> </input><br>
+<!-- Goes to editNws page -->
+<a href="editMessage.php">
+     <input  name="submit" value = "Alter messages" type="submit"/>
+   </a>
 <center>
 
 <center>
@@ -42,7 +45,5 @@ session_start();
 
 
 <?php
-if(isset($_POST['submit'])){
-    header("Location: index.php");
-};
+ 
 ?>

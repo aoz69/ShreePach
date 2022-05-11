@@ -26,17 +26,47 @@
     </div>
   </div>
 </nav>
+<center>
+<h1>ADD NEWS</h1>
+
+<br>
+<br>
+<form action = "addMessage.php" method = "post" >
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Heading</label>
+    <input name = "Heading" class="form-control" id="exampleFormControlInput1" placeholder="News Heading here" required> 
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">News Description</label>
+    <textarea  name = "Message" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="News Description here"></textarea>
+  </div>
+  <input  type= "submit" name= "submit"  value = "submit"></input>
+</form>
+
+
+
+<br>
+<br>
+<br>
+
+<h1>REMOVE NEWS</h1>
+
+
+
+<input  type= "submit" name= "delete"  value = "delete"></input>
+<center>
 
 <?php
 
-session_start();
+session_start(); //session start function
 ?>
 
-<br>
-<input type="Submit" value = "Alter messages"> </input><br>
-<center>
 
-<center>
 </body>
 </html>
 
+
+<?php
+
+
+?>

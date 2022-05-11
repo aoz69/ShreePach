@@ -34,18 +34,18 @@ session_start();
 $user = "";
 
 if(isset($_POST['submit'])){
-    $connection = mysqli_connect("localhost","root","");
+    $connection = mysqli_connect("localhost","root",""); //connect database
     $db = mysqli_select_db($connection,"web");
-    $runo = "SELECT * FROM staffinfo WHERE username = '$_POST[username]'";
+    $runo = "SELECT * FROM staffinfo WHERE username = '$_POST[username]'"; //selected username from the database table
     $run = mysqli_query($connection , $runo);
 while($check = mysqli_fetch_assoc($run)){
-
+//check entered data validity
     if($check['username'] == $_POST['username'] && $check['password'] == $_POST['password']){
         $_SESSION['username'] = $check ['username'];
-         header("Location: index.php");
+         header("Location: index.php"); //if data matches login to home page
         }
         else {
-            echo "Have a good night!";
+            echo "Have a good night!"; //else throws error
           }
     }
 }
