@@ -2,8 +2,43 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="CSS.css">
-    <script type="text/javascript" src="JS.js"></script>
+<style>
+    body {
+        background-color: rgb(51, 62, 219);
+        /* background-color: aliceblue; */
+    }
+    
+    form {
+        text-align: center;
+        color: rgb(232, 233, 241);
+    }
+    
+    #log {
+        margin-top: 10%;
+        text-align: center;
+        color: rgb(232, 233, 241);
+    }
+    
+    #down {
+        margin-top: 100px;
+        font-size: 75px;
+    }
+    
+    #down:hover {
+        background-color: brown;
+        margin-top: 100px;
+        font-size: 75px;
+    }
+    
+    #ji {
+        color: red;
+    }
+    
+    .boldBanaune {
+        font-weight: bold;
+    }
+
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +57,7 @@
 <?php
 
 if(isset($_POST['StudentLogin'])){
-    header("Location: studentLogin.php");
+    header("Location: ./StudentPage/studentLogin.php");
 }
 
 if(isset($_POST['StaffLogin'])){

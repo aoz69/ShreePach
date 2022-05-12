@@ -1,7 +1,7 @@
 <?php
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ADDING DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     $connection = mysqli_connect("localhost","root",""); //connect database
-    $db = mysqli_select_db($connection,"web");
+    $db = mysqli_select_db($connection,"web"); //select database
     $head = $_POST['Heading'];
     $msg = $_POST['Message'];
 
@@ -13,7 +13,7 @@
 
     if($query_run){
     }
-     header('Location: editMessage.php');
+     header('Location: message.php');
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ADDING DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 

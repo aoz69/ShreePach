@@ -57,12 +57,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="index.php" id = "color">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="message.php">Messages</a>
+    <a class="nav-item nav-link active" href="./indexStudent.php" id = "color">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="messageStudent.php">Messages</a>
       <a class="nav-item nav-link" href="course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
-      <a class="nav-item nav-link" href="logout.php">Logout</a>
+      <a class="nav-item nav-link" href="../logout.php">Logout</a>
     </div>
   </div>
 </nav>
@@ -73,10 +73,7 @@ session_start();
 ?>
 
 <br>
-<!-- Goes to editNews page -->
-<a href="editMessage.php">
-  <input  name="submit" value = "Add new messages" type="submit" id="mes"/> 
-  <!-- submit button -->
+
 </a>
 <br><br>
 <center>
@@ -94,9 +91,6 @@ session_start();
     <th>
       Message
     </th>
-    <th>
-    Action
-    </th>
   </tr>
 </thead>
 
@@ -113,7 +107,7 @@ session_start();
  $data = mysqli_num_rows($query);
 
   while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $res["id"] . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "<td><a href= 'deleteMessage.php?di=$res[id]' id='del'>Remove </td>". "</td></tr>" ;
+    echo "<tr><td>" . $res["id"] . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "</td></tr>" ;
 }
 ?>
 <!-- php code end-->
