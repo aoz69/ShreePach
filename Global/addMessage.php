@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="CSS.css">
+    <style>
+      .bonochi{
+        color: black;
+        font-weight: bold;
+
+      }
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,29 +32,24 @@
     </div>
   </div>
 </nav>
+<center>
+<h1>ADD NEWS</h1>
 
-<?php
+<br>
+<br>
 
-session_start();
-?>
+<form action = "addMessageCode.php" method = "post"  >
+  <div class="form-group">
+  <h3><label for="exampleFormControlInput1" class="bonochi">Heading</label></h3>
+    <input name = "Heading" class="form-control" id="exampleFormControlInput1"  placeholder="News Heading here"   required> 
+  </div>
+  <div class="form-group">
+    <h3><label for="exampleFormControlTextarea1" class="bonochi">News Description</label></h3>
+    <textarea name = "Message" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="News Description here"></textarea>
+  </div>
+  <input  type= "submit" name= "submit"  value = "submit"></input>
+</form>
+<center>
 
-
- <center>
-
- <h1 id = "ji"> Hello <?php echo $_SESSION['username'];?><h1>
-     <br> <br>
-    <h1> Message</h1>
-    <h4> The message panel is working fine. It is operating at efficient response time.</h3>
-
-    <h1> Course</h1>
-    <h4>The course panel is working fine. Students can see their modules and Teachers can add or remove assignments.
-    </h3>
-
-    <h1> Grades</h1>
-    <h4> The Grades panel is working fine. Students can see their realesed grades and teacher can release or edit grades.</h3>
-
-    <h1> Diary</h1>
-    <h4> The dairy panel is working fine. Students and Teachers can access the calender.</h3>
-</center>
 </body>
 </html>

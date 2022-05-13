@@ -2,8 +2,6 @@
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ADDING DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     $connection = mysqli_connect("localhost","root",""); //connect database
     $db = mysqli_select_db($connection,"web"); //select database
-    $head = $_POST['Heading'];
-    $msg = $_POST['Message'];
 
     if(isset($_POST['submit'])){
       $head = $_POST['Heading'];

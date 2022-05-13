@@ -50,7 +50,7 @@
 </head>
 <body>
     <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">WUC</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -83,13 +83,13 @@ session_start();
 <thead>
   <tr>
     <th>
-      S.N
+      ID
     </th>
     <th>
-      Headings
+      Course Name
     </th>
     <th>
-      Message
+      Credit Hours
     </th>
   </tr>
 </thead>
@@ -102,12 +102,12 @@ session_start();
 
  $connection = mysqli_connect("localhost","root",""); //connect database
  $db = mysqli_select_db($connection,"web"); //select database
- $sel = "select * from announcement"; //select table
+ $sel = "select * from course"; //select table
  $query = mysqli_query($connection, $sel); // run query from connected db
  $data = mysqli_num_rows($query);
 
   while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $res["id"] . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "</td></tr>" ;
+    echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["credit hours"]. "</td></tr>" ;
 }
 ?>
 <!-- php code end-->

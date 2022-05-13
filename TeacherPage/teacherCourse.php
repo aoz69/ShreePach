@@ -3,22 +3,23 @@
 <head>
 <!-- CSS -->
 <style>
- #tabble {
+ /* #tabble {
    text-align: center;
    font-size: xx-large;
    border-collapse:separate; 
    border-spacing: 2px 2px; 
- }
+ }*/
 
  #tabble tr:nth-child(even) {
-    background-color: #707070;
+    background-color: grey;
     color: white;
-  }
+  }*/
 
+/* 
   tr, td {
   border: 2px solid black;
   font-weight: bold;
-  }
+  } */
 
   #del{
     background-color: white;
@@ -29,7 +30,8 @@
   #del:hover{
     background-color: brown;
     color: white;
-    font-weight: bold;
+    text-decoration: none;
+    
   }
 
   #mes{
@@ -40,7 +42,13 @@
     color: red;
   
   }
-</style>
+
+  #curr{
+    color : red;
+    font-weight:bold;
+  }
+
+</style> 
 <!-- CSS -->
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -50,19 +58,19 @@
 </head>
 <body>
     <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">WUC</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-    <a class="nav-item nav-link active" href="./indexStudent.php" id = "color">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="messageStudent.php">Messages</a>
-      <a class="nav-item nav-link" href="courseStudent.php">Course</a>
-      <a class="nav-item nav-link" href="gradesStudent.php">Grades</a>
-      <a class="nav-item nav-link" href="diaryStudent.php">Diary</a>
-      <a class="nav-item nav-link" href="../logout.php">Logout</a>
+      <a class="nav-item nav-link active" href="../Global/index.php" >Home </a>
+      <a class="nav-item nav-link" href="../Global/Message.php" >Message</span></a>
+      <a class="nav-item nav-link" href="../AdminPage/course.php" id = "curr">Course</a>
+      <a class="nav-item nav-link" href="grades.php">Grades</a>
+      <a class="nav-item nav-link" href="diary.php">Diary</a>
+      <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
 </nav>
@@ -73,23 +81,29 @@ session_start();
 ?>
 
 <br>
-
+<!-- Goes to editNews page -->
+<a href="addCourse.php">
+  <input  name="submit" value = "Add Course" type="submit" id="mes"/> 
+  <!-- submit button -->
 </a>
 <br><br>
 <center>
 
 <!-- Table to show the database data -->
-<table id = "tabble">
+<table id = "tabble" class="table">
 <thead>
   <tr>
     <th>
-      S.N
+      ID
     </th>
     <th>
-      Headings
+      Course name
     </th>
     <th>
-      Message
+      Credit hours
+    </th>
+    <th>
+    Action
     </th>
   </tr>
 </thead>
@@ -98,18 +112,6 @@ session_start();
 
 </tbody>
 
-<?php //php code start
-
- $connection = mysqli_connect("localhost","root",""); //connect database
- $db = mysqli_select_db($connection,"web"); //select database
- $sel = "select * from announcement"; //select table
- $query = mysqli_query($connection, $sel); // run query from connected db
- $data = mysqli_num_rows($query);
-
-  while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $res["id"] . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "</td></tr>" ;
-}
-?>
 <!-- php code end-->
 </table>
 </center>

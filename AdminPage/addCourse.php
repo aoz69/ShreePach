@@ -38,19 +38,25 @@
   </div>
 </nav>
 <center>
-<h1>ADD NEWS</h1>
+<h1>ADD Course</h1>
 
 <br>
 <br>
 
-<form action = "addMessage.php" method = "post"  >
+<form action = "addCourseCode.php" method = "post"  >
   <div class="form-group">
-  <h3><label for="exampleFormControlInput1" class="bonochi">Heading</label></h3>
-    <input name = "Heading" class="form-control" id="exampleFormControlInput1"  placeholder="News Heading here"   required> 
+  <h3><label for="exampleFormControlInput1" class="bonochi">Course ID</label></h3>
+    <input  type="number"  name = "cid" class="form-control" id="exampleFormControlInput1"  placeholder="Course ID here"   required> 
   </div>
   <div class="form-group">
-    <h3><label for="exampleFormControlTextarea1" class="bonochi">News Description</label></h3>
-    <textarea name = "Message" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="News Description here"></textarea>
+  <h3><label for="exampleFormControlInput1" class="bonochi">Course Name</label></h3>
+    <input name = "name" class="form-control" id="exampleFormControlInput1"  placeholder="Course name here"   required> 
+  </div>
+  <div class="form-group">
+  <h3><label for="exampleFormControlInput1" class="bonochi">Credit Hours</label></h3>
+    <input type="number" name = "hours" class="form-control" id="exampleFormControlInput1"  placeholder="Credit hours here (in hours)"   required> 
+  </div>
+  <div class="form-group">
   </div>
   <input  type= "submit" name= "submit"  value = "submit"></input>
 </form>

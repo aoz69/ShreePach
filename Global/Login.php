@@ -57,15 +57,15 @@
 <?php
 
 if(isset($_POST['StudentLogin'])){
-    header("Location: ./StudentPage/studentLogin.php");
+    header("Location: ../StudentPage/studentLogin.php");
 }
 
 if(isset($_POST['StaffLogin'])){
-    header("Location: teacherLogin.php");
+    header("Location: ../TeacherPage/teacherLogin.php");
 }
 
 if(isset($_POST['AdminLogin'])){
-    header("Location: adminLogin.php");
+    header("Location: ../AdminPage/adminLogin.php");
 }
 ?>
 
