@@ -75,18 +75,25 @@
   </div>
 </nav>
 
-<?php
-//start session
-session_start();
-?>
 
-<br>
-<!-- Goes to editNews page -->
-<a href="addCourse.php">
+<br><br>
+
+
+<?php 
+  session_start();
+  echo $_SESSION['username'];
+  if($_SESSION['username'] == $check['username']){?>
+  <a href="addCourse.php">
   <input  name="submit" value = "Add Course" type="submit" id="mes"/> 
   <!-- submit button -->
-</a>
-<br><br>
+  </a>
+
+  <?php
+}
+?>
+
+
+  <br><br>
 <center>
 
 <!-- Table to show the database data -->
@@ -100,11 +107,9 @@ session_start();
       Course name
     </th>
     <th>
-      Credit hours
+      Duration
     </th>
-    <th>
-    Action
-    </th>
+
   </tr>
 </thead>
 
@@ -112,7 +117,18 @@ session_start();
 
 </tbody>
 
-<!-- php code end-->
+<?php //php code start
+
+ $connection = mysqli_connect("localhost","root",""); //connect database 
+ $db = mysqli_select_db($connection,"web"); //select database 
+ $sel = "select * from course"; //select table 
+ $query = mysqli_query($connection, $sel); // run query from connected db
+ $data = mysqli_num_rows($query);
+
+  while($res = mysqli_fetch_array($query)){  //loop to print all data
+    echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["credit hours"]. "<td></td>". "</td></tr>" ;
+}
+?>
 </table>
 </center>
 </body>

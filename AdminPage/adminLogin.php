@@ -63,7 +63,7 @@
 
 
 session_start();
-$user = "$_POST[username]";
+$user = "";
 
     if(isset($_POST['submit'])){
         $connection = mysqli_connect("localhost","root","");
@@ -71,9 +71,12 @@ $user = "$_POST[username]";
         $runo = "SELECT * FROM AdminInfo WHERE username = '$_POST[username]'";
         $run = mysqli_query($connection , $runo);
 while($check = mysqli_fetch_assoc($run)){
+
+
     if($check['username'] == $_POST['username']){
        if($check['password'] == $_POST['password']){
-        $_SESSION['username'] = $check ['username'];
+        
+        $_SESSION['username'] = $check['username'];
         header("Location: ../Global/index.php");
         }
         else{
