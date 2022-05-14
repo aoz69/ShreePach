@@ -4,15 +4,18 @@
     $db = mysqli_select_db($connection,"web"); //select database
 
     if(isset($_POST['submit'])){
-        $code = $_POST['cid'];
-        $name = $_POST['name'];
-        $crh = $_POST['hours'];
-        $query = "INSERT INTO `course` (`cid`, `name`, `Duration`) VALUES ('$code', '$name', '$crh');";
+        $code = $_POST['Time'];
+        $name = $_POST['MON'];
+        $name1 = $_POST['TUE'];
+        $name2 = $_POST['WED'];
+        $name3 = $_POST['THU'];
+        $name4 = $_POST['FRI'];
+        $query = "INSERT INTO `timttable` (`Time`, `MON`, `TUE`, `WED`, `THU`, `FRI`) VALUES ('$code', '$name','$name1','$name2','$name3','$name4')";
         $query_run = mysqli_query($connection,$query); 
 
     if($query_run){
     }
-     header('Location:../Global/course.php');
+     header('Location: timeTable.php');
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ADDING DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 

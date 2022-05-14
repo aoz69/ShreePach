@@ -10,6 +10,7 @@
     $sel = "select * from announcement"; //select table
     $query = mysqli_query($connection, $sel); //run query in selected db
     $res = mysqli_fetch_array($query); //get array value
+
     // if($res==0){    // stop id increment if there in no data
     //    $come = "TRUNCATE TABLE web.announcement"; //start increment from 0
     //    $query_run = mysqli_query($connection,$come); //run query

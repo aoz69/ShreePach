@@ -3,28 +3,14 @@
 <head>
 <!-- CSS -->
 <style>
- /* #tabble {
-   text-align: center;
-   font-size: xx-large;
-   border-collapse:separate; 
-   border-spacing: 2px 2px; 
- }*/
-
  #tabble tr:nth-child(even) {
-    background-color: grey;
-    color: white;
-  }*/
-
-/* 
-  tr, td {
-  border: 2px solid black;
-  font-weight: bold;
-  } */
+    font-weight: bold;
+    background-color: #d3d3c4;
+  }
 
   #del{
-    background-color: white;
-    color: brown;
     text-decoration: none;
+    color: red;
   }
 
   #del:hover{
@@ -46,8 +32,8 @@
   #curr{
     color : red;
     font-weight:bold;
+   font-weight:bold;
   }
-
 </style> 
 <!-- CSS -->
     <meta charset="UTF-8">
@@ -67,33 +53,33 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="../Global/index.php" >Home </a>
       <a class="nav-item nav-link" href="../Global/Message.php" >Message</span></a>
-      <a class="nav-item nav-link" href="../AdminPage/course.php" id = "curr">Course</a>
+      <a class="nav-item nav-link" href="../Global/course.php" id = "curr">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
-      <a class="nav-item nav-link" href="logout.php">Logout</a>
+      <a class="nav-item nav-link" href="timeTable.php" >Time Table</a>
+      <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
     </div>
   </div>
 </nav>
-
-
-<br><br>
-
-
+<br>
 <?php 
   session_start();
-  echo $_SESSION['username'];
-  if($_SESSION['username'] == $check['username']){?>
-  <a href="addCourse.php">
+  echo $_SESSION['username'] . ':';
+  if($_SESSION['username'] != "root"){?>
+    <?php
+  }
+  else {
+?>
+  <a href="../AdminPage/addCourse.php">
   <input  name="submit" value = "Add Course" type="submit" id="mes"/> 
-  <!-- submit button -->
   </a>
 
   <?php
-}
+  }
 ?>
 
 
-  <br><br>
+<br><br>
 <center>
 
 <!-- Table to show the database data -->
@@ -109,7 +95,19 @@
     <th>
       Duration
     </th>
+<?php
+    if($_SESSION['username'] != "root"){?>
 
+<?php
+  }
+  else {
+?>
+    <th>
+    Action
+    </th>
+    <?php
+  }
+?>
   </tr>
 </thead>
 
@@ -125,10 +123,22 @@
  $query = mysqli_query($connection, $sel); // run query from connected db
  $data = mysqli_num_rows($query);
 
-  while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["credit hours"]. "<td></td>". "</td></tr>" ;
-}
+
+
+
+  if($_SESSION['username'] != "root"){
+
+    while($res = mysqli_fetch_array($query)){  //loop to print all data
+      echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "<td></td>". "</td></tr>" ;
+  }
+  }
+  else {
+    while($res = mysqli_fetch_array($query)){  //loop to print all data
+        echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "<td><a href= '../AdminPage/deleteCourseCode.php?di=$res[cid]' id='del'>Remove </td>". "</td></tr>" ;
+    }
+  }
 ?>
+<!-- php code end-->
 </table>
 </center>
 </body>

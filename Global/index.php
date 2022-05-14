@@ -24,9 +24,10 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.php" id = "curr">Home</span></a>
       <a class="nav-item nav-link" href="message.php">Message</a>
-      <a class="nav-item nav-link" href="../AdminPage/course.php">Course</a>
+      <a class="nav-item nav-link" href="../Global/course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
+      <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>

@@ -3,17 +3,10 @@
 <head>
 <!-- CSS -->
 <style>
- /* #tabble {
-   text-align: center;
-   font-size: xx-large;
-   border-collapse:separate; 
-   border-spacing: 2px 2px; 
- }*/
-
  #tabble tr:nth-child(even) {
-    background-color: grey;
-    color: white;
-  }*/
+    font-weight: bold;
+    background-color: #d3d3c4;
+  }
 
 /* 
   tr, td {
@@ -22,9 +15,8 @@
   } */
 
   #del{
-    background-color: white;
-    color: brown;
     text-decoration: none;
+    color: red;
   }
 
   #del:hover{
@@ -47,8 +39,7 @@
     color : red;
     font-weight:bold;
   }
-
-</style> 
+</style>
 <!-- CSS -->
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -65,25 +56,24 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="../Global/index.php" >Home </a>
-      <a class="nav-item nav-link" href="../Global/Message.php" >Message</span></a>
-      <a class="nav-item nav-link" href="../AdminPage/course.php" id = "curr">Course</a>
+      <a class="nav-item nav-link active" href="index.php" >Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="message.php" >Message</a>
+      <a class="nav-item nav-link" href="course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
+      <a class="nav-item nav-link" href="timeTable.php" id = "curr">Time Table</a>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
 </nav>
 
-<?php
-//start session
-session_start();
-?>
 
 <br>
 <!-- Goes to editNews page -->
-<a href="addCourse.php">
-  <input  name="submit" value = "Add Course" type="submit" id="mes"/> 
+<a href="addTimeTable.php">
+  <input  name="submit" value = "Add Time Table" type="submit" id="mes"/> 
+  <a href="editTimeTable.php">
+  <input  name="submited" value = "Edit Time Table" type="submit" id="mes"/>
   <!-- submit button -->
 </a>
 <br><br>
@@ -94,13 +84,22 @@ session_start();
 <thead>
   <tr>
     <th>
-      ID
+      Time
     </th>
     <th>
-      Course name
+      MON
     </th>
     <th>
-      Credit hours
+      TUE
+    </th>
+    <th>
+      WED
+    </th>
+    <th>
+      THU
+    </th>
+    <th>
+      FRI
     </th>
     <th>
     Action
@@ -114,14 +113,19 @@ session_start();
 
 <?php //php code start
 
- $connection = mysqli_connect("localhost","root",""); //connect database 
- $db = mysqli_select_db($connection,"web"); //select database 
- $sel = "select * from course"; //select table 
+
+
+ $connection = mysqli_connect("localhost","root",""); //connect database
+ $db = mysqli_select_db($connection,"web"); //select database
+ $sel = "select * from timttable"; //select table
  $query = mysqli_query($connection, $sel); // run query from connected db
  $data = mysqli_num_rows($query);
 
-  while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["credit hours"]. "<td><a href= 'deleteCourseCode.php?di=$res[cid]' id='del'>Remove </td>". "</td></tr>" ;
+
+while($res = mysqli_fetch_array($query)){  //loop to print all data
+
+    echo "<tr><td>" . $res["Time"]  . "</td><td>" . $res["MON"].  "</td><td>". $res["TUE"]. "</td><td>". $res["WED"]. "</td><td>". $res["THU"]. "</td><td>". $res["FRI"]. "<td><a href= 'deleteTimeTableCode.php?di=$res[id]' id='del'>Remove </td>" . "</td><td>". "<td><a href= 'editTimeTable.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
+
 }
 ?>
 <!-- php code end-->
@@ -129,3 +133,5 @@ session_start();
 </center>
 </body>
 </html>
+
+

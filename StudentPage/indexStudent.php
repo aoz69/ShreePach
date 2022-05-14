@@ -19,7 +19,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="indexStudent.php" id = "color">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="messageStudent.php">Messages</a>
-      <a class="nav-item nav-link" href="course.php">Course</a>
+      <a class="nav-item nav-link" href="../Global/course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="../logout.php">Logout</a>

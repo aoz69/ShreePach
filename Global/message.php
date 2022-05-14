@@ -4,9 +4,9 @@
 <!-- CSS -->
 <style>
  #tabble tr:nth-child(even) {
-    background-color: grey;
-    color: white;
-  }*/
+    font-weight: bold;
+    background-color: #d3d3c4;
+  }
 
 /* 
   tr, td {
@@ -15,8 +15,8 @@
   } */
 
   #del{
-    background-color: white;
     text-decoration: none;
+    color: red;
   }
 
   #del:hover{
@@ -58,9 +58,10 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.php" >Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#" id = "curr">Message</a>
-      <a class="nav-item nav-link" href="../AdminPage/course.php">Course</a>
+      <a class="nav-item nav-link" href="../Global/course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
+      <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
@@ -77,7 +78,7 @@
 <center>
 
 <!-- Table to show the database data -->
-<table id = "tabble"  class="table">
+<table id = "tabble" class="table">
 <thead>
   <tr>
     <th>
