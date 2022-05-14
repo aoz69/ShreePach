@@ -73,7 +73,6 @@
   <a href="../AdminPage/addCourse.php">
   <input  name="submit" value = "Add Course" type="submit" id="mes"/> 
   </a>
-
   <?php
   }
 ?>
@@ -134,7 +133,7 @@
   }
   else {
     while($res = mysqli_fetch_array($query)){  //loop to print all data
-        echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "<td><a href= '../AdminPage/deleteCourseCode.php?di=$res[cid]' id='del'>Remove </td>". "</td></tr>" ;
+        echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "<td><a href= '../AdminPage/deleteCourseCode.php?di=$res[cid]' id='del'>Remove </td>". "</td><td>". "<td><a href= '../AdminPage/editCourse.php?di=$res[cid]' id='edit'>Edit</td>" . "</tr>" ;
     }
   }
 ?>

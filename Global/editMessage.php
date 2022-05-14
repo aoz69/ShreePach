@@ -2,17 +2,12 @@
 <html lang="en">
 <head>
 
-<style>
-      .bonochi{
-        color: black;
-        font-weight: bold;
-      }
-
-      #curr{
-      color : red;
-      font-weight:bold;
+    <style> 
+    #new{
+        opacity : 0;
     }
-    </style>
+</style>
+
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,53 +23,51 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="message.php">Message</a>
+      <a class="nav-item nav-link active" href="index.php" id = "color">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="message.php">Messages</a>
       <a class="nav-item nav-link" href="course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
-      <a class="nav-item nav-link" href="timeTable.php" id = "curr">Time Table</a>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
 </nav>
 <center>
-    <h1>Add Time Table</h1>
-</center>
+    <h1>Edit Time Table</h1>
+
 <br>
 <br>
 
-<form action = "addTimeTableCode.php" method = "post"  >
+<form action = "editMessageCode.php" method = "post"  >
+    <?php
+ $id = $_GET['di']; //fetch id
+
+ $connection = mysqli_connect("localhost","root",""); //connect database
+ $db = mysqli_select_db($connection,"web"); //select database
+ $sel = "select * from announcement where id ='$id'"; //select table
+ $query = mysqli_query($connection, $sel); // run query from connected db
+
+ $res = mysqli_fetch_array($query)
+?>
+
+ <input type = " text" id = "new" name = "di" value = "<?php  echo $id; ?>"> </input>
+
 <div class="row">
     <div class="col">
-        <label>Time
-      <input type="text"  name= "Time" class="form-control" placeholder="Time">
+    <label>Heading
+      <input type="text" name= "Heading" class="form-control"  value = <?php echo $res['Heading']?>
     </div>
     <div class="col">
-    <label>Monday
-      <input type="text" name= "MON" class="form-control" placeholder="MON">
+    <label> Message
+      <input type="text" name= "Message" class="form-control"  value = <?php echo $res['Message']?>
     </div>
-    <div class="col">
-    <label>Tuesday
-      <input type="text" name= "TUE" class="form-control" placeholder="TUE">
-    </div>
-    <div class="col">
-    <label>Wednesday
-      <input type="text" name= "WED" class="form-control" placeholder="WED">
-    </div>
-    <div class="col">
-    <label>Thursday
-      <input type="text" name= "THU" class="form-control" placeholder="THU">
-    </div>
-    <div class="col">
-    <label>Friday
-      <input type="text" name= "FRI" class="form-control" placeholder="FRI">
-    </div>
-  </div>
-  <input  type= "submit" name= "submit"  value = "submit"></input>
+    <br>
+  <input  type= "submit" name= "submit"  value = "Update"></input>
+
+
 </form>
-
-
+</center>
 
 </body>
 </html>
+

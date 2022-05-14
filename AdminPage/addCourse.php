@@ -5,9 +5,12 @@
     <style>
       .bonochi{
         color: black;
-        font-weight: bold;
-
       }
+
+      #curr{
+      color : red;
+      font-weight:bold;
+    }
     </style>
 
 
@@ -28,12 +31,13 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="index.php" id = "color">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="message.php">Messages</a>
-      <a class="nav-item nav-link" href="course.php">Course</a>
+      <a class="nav-item nav-link active" href="../Global/index.php">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="../Global/message.php" >Message</a>
+      <a class="nav-item nav-link" href="course.php" id = "curr">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
-      <a class="nav-item nav-link" href="logout.php">Logout</a>
+      <a class="nav-item nav-link" href="../Global/timeTable.php">Time Table</a>
+      <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
     </div>
   </div>
 </nav>

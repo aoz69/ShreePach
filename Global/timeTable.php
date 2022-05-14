@@ -72,8 +72,6 @@
 <!-- Goes to editNews page -->
 <a href="addTimeTable.php">
   <input  name="submit" value = "Add Time Table" type="submit" id="mes"/> 
-  <a href="editTimeTable.php">
-  <input  name="submited" value = "Edit Time Table" type="submit" id="mes"/>
   <!-- submit button -->
 </a>
 <br><br>

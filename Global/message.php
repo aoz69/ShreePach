@@ -112,7 +112,7 @@
 
 $i = 1;
 while($res = mysqli_fetch_array($query)){  //loop to print all data
-  echo "<tr><td>" . $i . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "<td><a href= 'deleteMessageCode.php?di=$res[id]' id='del'>Remove </td>". "</td></tr>" ;
+  echo "<tr><td>" . $i . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "<td><a href= 'deleteMessageCode.php?di=$res[id]' id='del'>Remove </td>". "<td><a href= 'editMessage.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
 $i++;
 }
 ?>
