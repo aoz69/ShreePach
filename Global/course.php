@@ -64,19 +64,20 @@
 <br>
 <?php 
   session_start();
-  echo $_SESSION['username'] . ':';
   if($_SESSION['username'] != "root"){?>
     <?php
   }
   else {
 ?>
   <a href="../AdminPage/addCourse.php">
-  <input  name="submit" value = "Add Course" type="submit" id="mes"/> 
+  <input   class="btn btn-light" name="submit" value = "Add Course" type="submit" id="mes"/> 
   </a>
   <?php
   }
 ?>
-
+  <a href="module.php">
+  <input   class="btn btn-light" name="submit" value = "Modules" type="submit" id="mes"/> 
+  </a>
 
 <br><br>
 <center>

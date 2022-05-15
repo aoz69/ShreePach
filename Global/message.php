@@ -71,7 +71,7 @@
 <br>
 <!-- Goes to editNews page -->
 <a href="addMessage.php">
-  <input  name="submit" value = "Add new messages" type="submit" id="mes"/> 
+  <input  class="btn btn-light" name="submit" value = "Add new messages" type="submit" id="mes"/> 
   <!-- submit button -->
 </a>
 <br><br>

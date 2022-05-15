@@ -71,7 +71,10 @@
       <input type="text" name= "FRI" class="form-control" placeholder="FRI">
     </div>
   </div>
-  <input  type= "submit" name= "submit"  value = "submit"></input>
+  <br><br>
+  <center>
+  <input  class="btn btn-light" type= "submit" name= "submit"  value = "submit"></input>
+  </center>
 </form>
 
 

@@ -52,7 +52,7 @@
     <h3><label for="exampleFormControlTextarea1" class="bonochi">News Description</label></h3>
     <textarea name = "Message" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="News Description here"></textarea>
   </div>
-  <input  type= "submit" name= "submit"  value = "submit"></input>
+  <input  class="btn btn-light" type= "submit" name= "submit"  value = "Add"></input>
 </form>
 <center>
 
