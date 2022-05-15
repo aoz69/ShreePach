@@ -14,7 +14,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">WUC</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,14 +32,25 @@
     </div>
   </div>
 </nav>
+<?php //php code start
+session_start();
+ $connection = mysqli_connect("localhost","root",""); //connect database
+ $db = mysqli_select_db($connection,"web"); //select database
+ $uid = (int) $_SESSION['id'];
+ $sel = "select u_id, role, u_name from user WHERE u_id =  $uid" ; //select table
+ $query = mysqli_query($connection, $sel); // run query from connected db
+ $data = mysqli_num_rows($query);
+ $res = mysqli_fetch_array($query);
+ $_SESSION['role'] = $res["role"] ;
+ $_SESSION['u_name'] = $res["u_name"] ;
+?>
 
 
 
  <center>
 
- <h1 id = "ji"> Hello <?php
-                            session_start();
-                            echo $_SESSION['username'];?><h1>
+ <h1 id = "ji"> Hello <?php  echo $_SESSION['u_name'];?><h1>
+                     
      <br> <br>
     <h1> Message</h1>
     <h4> The message panel is working fine. It is operating at efficient response time.</h3>
@@ -56,4 +67,6 @@
 </center>
 </body>
 </html>
+
+
 

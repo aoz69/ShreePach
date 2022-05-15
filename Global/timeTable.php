@@ -69,11 +69,19 @@
 
 
 <br>
-<!-- Goes to editNews page -->
-<a href="addTimeTable.php">
+
+
+<?php 
+  session_start();
+if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
+<a href="../AddPage/addTimeTable.php">
   <input class="btn btn-light" name="submit" value = "Add Time Table" type="submit" id="mes"/> 
   <!-- submit button -->
 </a>
+  <?php
+  }?>
+<!-- Goes to editNews page -->
+
 <br><br>
 <center>
 
@@ -99,9 +107,12 @@
     <th>
       FRI
     </th>
+    <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
     <th>
     Action
     </th>
+    <?php
+  }?>
   </tr>
 </thead>
 
@@ -112,7 +123,6 @@
 <?php //php code start
 
 
-
  $connection = mysqli_connect("localhost","root",""); //connect database
  $db = mysqli_select_db($connection,"web"); //select database
  $sel = "select * from timttable"; //select table
@@ -120,11 +130,16 @@
  $data = mysqli_num_rows($query);
 
 
-while($res = mysqli_fetch_array($query)){  //loop to print all data
-
-    echo "<tr><td>" . $res["Time"]  . "</td><td>" . $res["MON"].  "</td><td>". $res["TUE"]. "</td><td>". $res["WED"]. "</td><td>". $res["THU"]. "</td><td>". $res["FRI"]. "<td><a href= 'deleteTimeTableCode.php?di=$res[id]' id='del'>Remove </td>" . "</td><td>". "<td><a href= 'editTimeTable.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
-
+if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){
+  while($res = mysqli_fetch_array($query)){  //loop to print all data
+    echo "<tr><td>" . $res["Time"]  . "</td><td>" . $res["MON"].  "</td><td>". $res["TUE"]. "</td><td>". $res["WED"]. "</td><td>". $res["THU"]. "</td><td>". $res["FRI"]. "<td><a href= '../DeletePage/deleteTimeTableCode.php?di=$res[id]' id='del'>Remove </td>" . "</td><td>". "<td><a href= '../EditPage/editTimeTable.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
 }
+ }
+  else {
+    while($res = mysqli_fetch_array($query)){  //loop to print all data
+      echo "<tr><td>" . $res["Time"]  . "</td><td>" . $res["MON"].  "</td><td>". $res["TUE"]. "</td><td>". $res["WED"]. "</td><td>". $res["THU"]. "</td><td>". $res["FRI"]."</td></tr>" ;
+  }
+  }
 ?>
 <!-- php code end-->
 </table>

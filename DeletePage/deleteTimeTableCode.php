@@ -8,7 +8,7 @@
 
     if($query_run){ // after the delete function
 
-     header('Location: timeTable.php'); //head to message page
+     header('Location: ../Global/timeTable.php'); //head to message page
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Delete DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?>

@@ -58,7 +58,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.php" >Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#" id = "curr">Message</a>
-      <a class="nav-item nav-link" href="../Global/course.php">Course</a>
+      <a class="nav-item nav-link" href="course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
@@ -69,11 +69,20 @@
 
 
 <br>
+<?php
+session_start();
+if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
+    <a href="../AddPage/addMessage.php">
+    <input  class="btn btn-light" name="submit" value = "Add new messages" type="submit" id="mes"/> 
+    <!-- submit button -->
+    </a>
+  <?php
+  }?>
+
+
+
 <!-- Goes to editNews page -->
-<a href="addMessage.php">
-  <input  class="btn btn-light" name="submit" value = "Add new messages" type="submit" id="mes"/> 
-  <!-- submit button -->
-</a>
+
 <br><br>
 <center>
 
@@ -90,9 +99,12 @@
     <th>
       Message
     </th>
+    <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
     <th>
     Action
     </th>
+    <?php
+  }?>
   </tr>
 </thead>
 
@@ -102,8 +114,6 @@
 
 <?php //php code start
 
-
-
  $connection = mysqli_connect("localhost","root",""); //connect database
  $db = mysqli_select_db($connection,"web"); //select database
  $sel = "select * from announcement"; //select table
@@ -111,9 +121,18 @@
  $data = mysqli_num_rows($query);
 
 $i = 1;
+if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){
 while($res = mysqli_fetch_array($query)){  //loop to print all data
-  echo "<tr><td>" . $i . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "<td><a href= 'deleteMessageCode.php?di=$res[id]' id='del'>Remove </td>". "<td><a href= 'editMessage.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
+  echo "<tr><td>" . $i . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"]. "<td><a href= '../DeletePage/deleteMessageCode.php?di=$res[id]' id='del'>Remove </td>". "<td><a href= '../EditPage/editMessage.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
 $i++;
+}
+}
+
+else{
+  while($res = mysqli_fetch_array($query)){  //loop to print all data
+    echo "<tr><td>" . $i . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"].  "</td><td>"."</td></tr>" ;
+  $i++;
+}
 }
 ?>
 <!-- php code end-->

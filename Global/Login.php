@@ -46,34 +46,46 @@
 </head>
 
 <body>
-    <centre>
-    <form action = ""  method = "post" class="btns" >
-        <input type="submit" value="Student Login" name="StudentLogin" id="down"><br>
-        <input type="submit" value="Staff Login" name="StaffLogin" id="down"><br>
-        <input type="submit" value="Admin Login" name="AdminLogin" id="down"><br>
-</form>
-</centre>
+    <h1 id="log">
+        User Login
+    </h1>
+
+
+    <form method = "post">
+        <label for="fname">Userid:</label><br>
+        <input name = "id" type="text" id="username" required> <br>
+        <label for="fname">Password:</label><br>
+        <input name = "password" type="password" required><br><br>
+        <input name = "submit" type="submit" onclick="validation()">
+    </form>
 
 <?php
 
-if(isset($_POST['StudentLogin'])){
-    header("Location: ../StudentPage/studentLogin.php");
-}
 
-if(isset($_POST['StaffLogin'])){
-    header("Location: ../TeacherPage/teacherLogin.php");
-}
+    session_start();
+    $user = "";
+    if(isset($_POST['submit'])){
+        $connection = mysqli_connect("localhost","root","");
+        $db = mysqli_select_db($connection,"web");
+        $query = "SELECT * FROM user WHERE u_id = '$_POST[id]'";
+        $run = mysqli_query($connection , $query);
+    while($check = mysqli_fetch_assoc($run)){
 
-if(isset($_POST['AdminLogin'])){
-    header("Location: ../AdminPage/adminLogin.php");
+        if($check['u_id'] == $_POST['id']){
+            if($check['password'] == $_POST['password']){
+                $_SESSION['id'] = $check['u_id'];
+                
+                header("Location: ../Global/index.php");
+            }
+            else{
+                echo "INVALID PASSWORD";
+            }
+        }
+    }
 }
 ?>
-
-
-</body>
-
-
 
 </body>
 
 </html>
+

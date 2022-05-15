@@ -15,7 +15,7 @@
     //    $come = "TRUNCATE TABLE web.announcement"; //start increment from 0
     //    $query_run = mysqli_query($connection,$come); //run query
     // }
-     header('Location: message.php'); //head to message page
+     header('Location: ../Global/message.php'); //head to message page
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Delete DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?>

@@ -15,7 +15,7 @@
 
     if($query_run){
     }
-     header('Location: timeTable.php');
+     header('Location: ../Global/timeTable.php');
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ADDING DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 

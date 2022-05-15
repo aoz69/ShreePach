@@ -66,19 +66,15 @@
 <h1>Modules</h1>
 </center>
 
+
 <?php 
   session_start();
-  if($_SESSION['username'] != "root"){?>
-    <?php
-  }
-  else {
-?>
-    <a href="addModule.php">
+if($_SESSION['role'] == "admin") { ?>
+    <a href="../AddPage/addModule.php">
     <input   class="btn btn-light" name="submit" value = "Add Module" type="submit" id="mes"/> 
     </a>
-<?php
-  }
-?>
+  <?php
+  }?>
 
 <br><br>
 <center>
@@ -102,9 +98,12 @@
     <th>
       Tutor
     </th>
+    <?php if($_SESSION['role'] == "admin") { ?>
     <th>
     Action
     </th>
+    <?php
+  }?>
     <?php
 ?>
   </tr>
@@ -118,17 +117,30 @@
  $db = mysqli_select_db($connection,"web"); //select database
  $sel = "select * from module "; //select table
  $fel = 'select * from module INNER JOIN 
- course course_id ON module.course_id=cid 
+ course course_id ON module.course_id=cid
  INNER JOIN  
- staffinfo staff_id ON module.staff_id=id'; //select table
+ user staff_id ON module.staff_id = u_id'; //select table
  $query = mysqli_query($connection, $sel); // run query from connected db
  $query2 = mysqli_query($connection, $fel);
  $data = mysqli_num_rows($query);
 
-    while($res = mysqli_fetch_array($query)){  //loop to print all data
-        $reso = mysqli_fetch_array($query2);
-        echo "<tr><td>" . $res["mid"] . "</td><td>". $res["name"] .  "</td><td>" . $res["credit hours"] .  "</td><td>" . $reso["name"] ."</td><td>" . $reso["username"] .  "</td><td>" ;
-    }
+
+if($_SESSION['role'] == "admin"){
+  while($res = mysqli_fetch_array($query)){  //loop to print all data
+    $reso = mysqli_fetch_array($query2);
+    echo "<tr><td>" . $res["mid"] . "</td><td>". $res["name"] .  "</td><td>" . $res["credit hours"] .  "</td><td>" . $reso["name"] ."</td><td>" . $reso["u_name"] .  "</td></tr>" ;
+  }
+}
+
+else{
+  while($res = mysqli_fetch_array($query)){  //loop to print all data
+    $reso = mysqli_fetch_array($query2);
+    echo "<tr><td>" . $res["mid"] . "</td><td>". $res["name"] .  "</td><td>" . $res["credit hours"] .  "</td><td>" . $reso["name"] ."</td><td>" . $reso["u_name"] .  "</td></tr>" ;
+  }
+}
+
+
+
 ?>
 <!-- php code end-->
 </tbody>

@@ -62,19 +62,16 @@
   </div>
 </nav>
 <br>
+
 <?php 
   session_start();
-  if($_SESSION['username'] != "root"){?>
-    <?php
-  }
-  else {
-?>
-  <a href="../AdminPage/addCourse.php">
+if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
+      <a href="../AddPage/addCourse.php">
   <input   class="btn btn-light" name="submit" value = "Add Course" type="submit" id="mes"/> 
   </a>
   <?php
-  }
-?>
+  }?>
+
   <a href="module.php">
   <input   class="btn btn-light" name="submit" value = "Modules" type="submit" id="mes"/> 
   </a>
@@ -95,19 +92,12 @@
     <th>
       Duration
     </th>
-<?php
-    if($_SESSION['username'] != "root"){?>
-
-<?php
-  }
-  else {
-?>
+    <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
     <th>
     Action
     </th>
     <?php
-  }
-?>
+  }?>
   </tr>
 </thead>
 
@@ -124,17 +114,15 @@
  $data = mysqli_num_rows($query);
 
 
-
-
-  if($_SESSION['username'] != "root"){
-
-    while($res = mysqli_fetch_array($query)){  //loop to print all data
-      echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "<td></td>". "</td></tr>" ;
-  }
-  }
+ if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){
+  while($res = mysqli_fetch_array($query)){  //loop to print all data
+  echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "<td><a href= '../DeletePage/deleteCourseCode.php?di=$res[cid]' id='del'>Remove </td>". "</td><td>". "<td><a href= '../EditPage/editCourse.php?di=$res[cid]' id='edit'>Edit</td>" . "</tr>" ;
+}
+ }
   else {
     while($res = mysqli_fetch_array($query)){  //loop to print all data
-        echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "<td><a href= '../AdminPage/deleteCourseCode.php?di=$res[cid]' id='del'>Remove </td>". "</td><td>". "<td><a href= '../AdminPage/editCourse.php?di=$res[cid]' id='edit'>Edit</td>" . "</tr>" ;
+      echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "<td></td>". "</td></tr>" ;
+    
     }
   }
 ?>

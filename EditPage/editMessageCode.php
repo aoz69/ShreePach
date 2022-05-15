@@ -12,7 +12,7 @@
 
     if($query_run){
     }
-     header('Location: message.php');
+     header('Location: ../Global/message.php');
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Update DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 

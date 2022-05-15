@@ -16,7 +16,7 @@
 
     if($query_run){
     }
-     header('Location: timeTable.php');
+     header('Location: ../Global/timeTable.php');
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Update DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 

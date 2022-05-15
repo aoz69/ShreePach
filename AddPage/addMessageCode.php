@@ -7,11 +7,11 @@
       $head = $_POST['Heading'];
         $msg = $_POST['Message'];
     $query = "insert into announcement(Heading, Message) values('$head' , '$msg')";
-    $query_run = mysqli_query($connection,$query) or die(mysqli_error()); 
+    $query_run = mysqli_query($connection,$query); 
 
     if($query_run){
     }
-     header('Location: message.php');
+     header('Location: ../Global/message.php');
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ADDING DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 
