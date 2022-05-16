@@ -6,7 +6,6 @@
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
         $time = $_POST['Duration'];
-
         $query = "UPDATE `course` SET `name` = '$name',  `Duration` = '$time' where cid = " . $id;
         $query_run = mysqli_query($connection,$query); 
 
@@ -16,4 +15,3 @@
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Update DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 
-

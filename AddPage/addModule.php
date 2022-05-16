@@ -43,26 +43,56 @@
   </div>
 </nav>
 <div class="text-center">
-  <h1>ADD Course</h1>
+  <h1>ADD Module</h1>
   <br>
   <br>
-  <form action = "addCourseCode.php" method = "post"  >
-    <div class="form-group">
-    <h3><label for="exampleFormControlInput1" class="bonochi">Course ID</label></h3>
-      <input  type="number"  name = "cid" class="form-control" id="exampleFormControlInput1"  placeholder="Course ID here"   required> 
+  <form action = "addModuleCode.php" method = "post"  >
+  <div class="form-group">
+    <h3><label for="exampleFormControlInput1" class="bonochi">Module id</label></h3>
+      <input  type="text"  name = "id" class="form-control" id="exampleFormControlInput1"  placeholder="Module id here"   required> 
     </div>
     <div class="form-group">
-    <h3><label for="exampleFormControlInput1" class="bonochi">Course Name</label></h3>
-      <input name = "name" class="form-control" id="exampleFormControlInput1"  placeholder="Course name here"   required> 
+    <h3><label for="exampleFormControlInput1" class="bonochi">Module name</label></h3>
+      <input  type="text"  name = "name" class="form-control" id="exampleFormControlInput1"  placeholder="Module name here"   required> 
     </div>
     <div class="form-group">
-    <h3><label for="exampleFormControlInput1" class="bonochi">Credit Hours</label></h3>
-      <input type="number" name = "hours" class="form-control" id="exampleFormControlInput1"  placeholder="Credit hours here (in hours)"   required> 
+    <h3><label for="exampleFormControlInput1" class="bonochi">Credit score</label></h3>
+      <input name = "credithours" class="form-control" id="exampleFormControlInput1"  placeholder="Credit score here"   required> 
     </div>
-    <div class="form-group">
+
+    <?php
+        $connection = mysqli_connect("localhost","root",""); //connect database
+        $db = mysqli_select_db($connection,"web"); //select database
+        $sel = "select * from module"; //select table
+        $fel = 'select * from course';
+        $gel = 'select * from user WHERE role = "teacher"';
+        $query2 = mysqli_query($connection, $fel); // run query from connected db
+        $query3 = mysqli_query($connection, $gel); // run query from connected db
+        $query = mysqli_query($connection, $sel); // run query from connected db
+        $res = mysqli_fetch_array($query);
+    ?>
+
+    <div>
+        <label>Course</label>
+        <select name="course_id"><?php       
+            while ($ges = mysqli_fetch_array($query2)){
+                echo '<option>' . $ges['name']; '</option>';
+            }
+            ?>
+        </select>
     </div>
-    <input  type= "submit" name= "submit"  value = "submit"></input>
-  </form>
+    <br>
+    <div>
+    <label>Tutor</label>
+        <select name="uid"><?php       
+            while ($tes = mysqli_fetch_array($query3)){
+                echo '<option>' . $tes['u_name']; '</option>';
+            }
+            ?>
+        </select>
+    </div><br>
+        <input  type= "submit" name= "submit"  value = "submit"></input>
+    </form>
 </div>
 
 </body>
