@@ -76,7 +76,8 @@
         <label>Course</label>
         <select name="course_id"><?php       
             while ($ges = mysqli_fetch_array($query2)){
-                echo '<option>' . $ges['name']; '</option>';
+              $red = $ges['cid'];
+              echo '<option value ="'. $red.'">' . $ges['name'] . '</option>';
             }
             ?>
         </select>
@@ -86,7 +87,8 @@
     <label>Tutor</label>
         <select name="uid"><?php       
             while ($tes = mysqli_fetch_array($query3)){
-                echo '<option>' . $tes['u_name']; '</option>';
+              $red = $tes['u_id'];
+              echo '<option value ="'. $red.'">' . $tes['u_name'] . '</option>';
             }
             ?>
         </select>

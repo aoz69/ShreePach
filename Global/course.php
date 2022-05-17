@@ -70,7 +70,7 @@
 </div>
   <?php 
     session_start();
-  if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
+  if($_SESSION['role'] == "admin") { ?>
         <a href="../AddPage/addCourse.php">
     <input   class="btn btn-light" name="submit" value = "Add Course" type="submit" id="mes"/> 
     </a>

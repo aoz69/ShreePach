@@ -66,7 +66,7 @@ session_start();
     <h4> The Grades panel is working fine. Students can see their realesed grades and teacher can release or edit grades.</h3>
 
     <h1> Diary</h1>
-    <h4> The dairy panel is working fine. Students and Teachers can access the calender.</h3>
+    <h4> The dairy panel is working fine. Students and Teachers can access their respective log.</h3>
 </div>
 </body>
 </html>

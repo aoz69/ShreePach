@@ -8,15 +8,9 @@
         $iden = $_POST['id'];
         $name = $_POST['name'];
         $cr = $_POST['credithours'];
-        $cid = $_POST['course_id'];
-        $uid = $_POST['uid'];
-        
-        $fel = 'select * from module INNER JOIN 
-        course course_id ON module.course_id=cid
-        INNER JOIN  
-        user staff_id ON module.staff_id = u_id'; //select table
-        $query = "INSERT INTO module INNER JOIN 
-        course ON module.course_id=cid(`mid`, `name`, `credit hours`, `course_id`, `staff_id`) VALUES (\'$iden\', \'$name\', \'$cr\', \'$cid\', \'$uid\');";
+        $cid  = intval( $_POST['course_id'] );
+        $uid  = intval( $_POST['uid'] );
+         $query = "INSERT INTO `module` (`mid`, `name`, `credit hours`, `course_id`, `staff_id`) VALUES ('$iden', '$name', '$cr', $cid, $uid);";
         $query_run = mysqli_query($connection,$query); 
     if($query_run){
     }

@@ -8,6 +8,12 @@
     background-color: #d3d3c4;
   }
 
+/* 
+  tr, td {
+  border: 2px solid black;
+  font-weight: bold;
+  } */
+
   #del{
     text-decoration: none;
     color: red;
@@ -32,9 +38,8 @@
   #curr{
     color : red;
     font-weight:bold;
-   font-weight:bold;
   }
-</style> 
+</style>
 <!-- CSS -->
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -45,7 +50,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Document</title>
 </head>
-
 <body>
     <!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,98 +59,85 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="../Global/index.php" >Home </a>
-      <a class="nav-item nav-link" href="../Global/Message.php" >Message</span></a>
-      <a class="nav-item nav-link" href="../Global/course.php" id = "curr">Course > Module</a>
+      <a class="nav-item nav-link active" href="index.php" >Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#" id = "curr">Message</a>
+      <a class="nav-item nav-link" href="course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
-      <a class="nav-item nav-link" href="timeTable.php" >Time Table</a>
-      <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
+      <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
+      <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
 </nav>
-<div class="text-center">
-  <br>
-  <h1>Modules</h1>
-</div>
-  <?php 
+<?php 
     session_start();
-  if($_SESSION['role'] == "admin") { ?>
-      <a href="../AddPage/addModule.php">
-      <input   class="btn btn-light" name="submit" value = "Add Module" type="submit" id="mes"/> 
-      </a>
-    <?php
-    }?>
+?>
 <div class="text-center">
+
+  <h1>Diary</h1>
+  <br>
+</div>
+
+    <a href="../AddPage/addMessage.php">
+      <input  class="btn btn-light" name="submit" value = "Add new data" type="submit" id="mes"/> 
+      <!-- submit button -->
+    </a>
+  <!-- Goes to editNews page -->
+
   <br><br>
-  
+<div class="text-center">
 
   <!-- Table to show the database data -->
   <table id = "tabble" class="table">
   <thead>
     <tr>
       <th>
-        ID
+        S.N
       </th>
       <th>
-          Module name
+        Headings
       </th>
       <th>
-        Credit score
+        Message
       </th>
-      <th>
-        Course
-      </th>
-      <th>
-        Tutor
-      </th>
-      <?php if($_SESSION['role'] == "admin") { ?>
+      <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
       <th>
       Action
       </th>
       <?php
     }?>
-      <?php
-  ?>
     </tr>
   </thead>
+
   <tbody>
 
+  </tbody>
 
   <?php //php code start
 
   $connection = mysqli_connect("localhost","root",""); //connect database
   $db = mysqli_select_db($connection,"web"); //select database
-  $sel = "select * from module "; //select table
-  $fel = 'select * from module INNER JOIN 
-  course course_id ON module.course_id=cid
-  INNER JOIN  
-  user staff_id ON module.staff_id = u_id'; //select table
+  $sel = "select * from announcement"; //select table
   $query = mysqli_query($connection, $sel); // run query from connected db
-  $query2 = mysqli_query($connection, $fel);
   $data = mysqli_num_rows($query);
 
-
-  if($_SESSION['role'] == "admin"){
-    while($res = mysqli_fetch_array($query)){  //loop to print all data
-      $reso = mysqli_fetch_array($query2);
-      echo "<tr><td>" . $res["mid"] . "</td><td>". $res["name"] .  "</td><td>" . $res["credit hours"] .  "</td><td>" . $reso["name"] ."</td><td>" . $reso["u_name"] .  "</td><td><a href= '../DeletePage/deleteModuleCode.php?di=$res[mid]' id='del'>Remove". "<td><a href= '../EditPage/editModule.php?di=$res[mid]' id='edit'>Edit</td>" . "</tr>" ;
-    }
+  $i = 1;
+  if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){
+  while($res = mysqli_fetch_array($query)){  //loop to print all data
+    echo "<tr><td>" . $i . "</td><td>". $res['Heading'] . "</td><td>" . $res['Message']. "<td><a href= '../DeletePage/deleteMessageCode.php?di=$res[id]' id='del'>Remove </td>". "<td><a href= '../EditPage/editMessage.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
+  $i++;
+  }
   }
 
   else{
     while($res = mysqli_fetch_array($query)){  //loop to print all data
-      $reso = mysqli_fetch_array($query2);
-        echo "<tr><td>" . $res["mid"] . "</td><td>". $res["name"] .  "</td><td>" . $res["credit hours"] .  "</td><td>" . $reso["name"] ."</td><td>" . $reso["u_name"] . "</td><tr>";
+      echo "<tr><td>" . $i . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"].  "</td><td>"."</td></tr>" ;
+    $i++;
   }
   }
-
-
   ?>
   <!-- php code end-->
-  </tbody>
   </table>
-<div class="text-center">
-
+</div>
 </body>
 </html>
