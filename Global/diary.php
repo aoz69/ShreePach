@@ -77,66 +77,51 @@
   <h1>Diary</h1>
   <br>
 </div>
-
-    <a href="../AddPage/addMessage.php">
-      <input  class="btn btn-light" name="submit" value = "Add new data" type="submit" id="mes"/> 
-      <!-- submit button -->
-    </a>
+<a href="../AddPage/addLog.php">
+  <input  class="btn btn-light" name="submit" value = "Add new data" type="submit" id="mes"/> 
+  <!-- submit button -->
+</a>
   <!-- Goes to editNews page -->
 
-  <br><br>
+<br><br>
 <div class="text-center">
 
   <!-- Table to show the database data -->
   <table id = "tabble" class="table">
-  <thead>
-    <tr>
-      <th>
-        S.N
-      </th>
-      <th>
-        Headings
-      </th>
-      <th>
-        Message
-      </th>
-      <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
-      <th>
-      Action
-      </th>
-      <?php
-    }?>
-    </tr>
-  </thead>
+    <thead>
+      <tr>
+        <th>
+          S.N
+        </th>
+        <th>
+          Log
+        </th>
+        <th>
+          Date(YYYY-MM-DD)
+        </th>
+        <th>
+        Action
+        </th>
+      </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
 
-  </tbody>
-
-  <?php //php code start
-
-  $connection = mysqli_connect("localhost","root",""); //connect database
-  $db = mysqli_select_db($connection,"web"); //select database
-  $sel = "select * from announcement"; //select table
-  $query = mysqli_query($connection, $sel); // run query from connected db
-  $data = mysqli_num_rows($query);
-
-  $i = 1;
-  if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){
-  while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $i . "</td><td>". $res['Heading'] . "</td><td>" . $res['Message']. "<td><a href= '../DeletePage/deleteMessageCode.php?di=$res[id]' id='del'>Remove </td>". "<td><a href= '../EditPage/editMessage.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
-  $i++;
-  }
-  }
-
-  else{
-    while($res = mysqli_fetch_array($query)){  //loop to print all data
-      echo "<tr><td>" . $i . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"].  "</td><td>"."</td></tr>" ;
-    $i++;
-  }
-  }
-  ?>
-  <!-- php code end-->
+    <?php //php code start
+    echo $_SESSION['id'];
+      $connection = mysqli_connect("localhost","root",""); //connect database
+      $db = mysqli_select_db($connection,"web"); //select database
+      $sel = "select * from Logs where uid = " . $_SESSION['id']; //select table
+      $query = mysqli_query($connection, $sel); // run query from connected db
+      $data = mysqli_num_rows($query);
+      $i = 1;
+      while($res = mysqli_fetch_array($query)){  //loop to print all data
+        echo "<tr><td>" . $i . "</td><td>". $res['Log'] . "</td><td>" . $res['Date']. "<td><a href= '../DeletePage/deletelogCode.php?di=$res[did]' did='del'>Remove </td>". "<td><a href= '../EditPage/editlog.php?di=$res[did]' did='edit'>Edit</td>" . "</tr>" ;
+        $i++;
+      }
+    ?>
+      <!-- php code end-->
+    </tbody>
   </table>
 </div>
 </body>

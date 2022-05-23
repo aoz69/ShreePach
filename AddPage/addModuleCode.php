@@ -10,7 +10,7 @@
         $cr = $_POST['credithours'];
         $cid  = intval( $_POST['course_id'] );
         $uid  = intval( $_POST['uid'] );
-         $query = "INSERT INTO `module` (`mid`, `name`, `credit hours`, `course_id`, `staff_id`) VALUES ('$iden', '$name', '$cr', $cid, $uid);";
+        $query = "INSERT INTO `module` (`mid`, `name`, `credit hours`, `course_id`, `staff_id`) VALUES ('$iden', '$name', '$cr', $cid, $uid);";
         $query_run = mysqli_query($connection,$query); 
     if($query_run){
     }
