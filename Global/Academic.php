@@ -62,71 +62,81 @@
       <a class="nav-item nav-link active" href="index.php" >Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="message.php" >Message</a>
       <a class="nav-item nav-link" href="course.php">Course</a>
-      <a class="nav-item nav-link" href="diary.php"id = "curr">Diary</a>
+      <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
-      <a class="nav-item nav-link" href="Academic.php">Academic</a>
+      <a class="nav-item nav-link" href="Academic.php" id = "curr">Academic</a>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
 </nav>
+
+
+<br>
+
+
 <?php 
-    session_start();
-    // if($SESSION['id'] = "" || empty($SESSION['id']) ){
+  session_start();
+  // if($SESSION['id'] = "" || empty($SESSION['id']) ){
 
-    //   header('Location: ../Global/login.php');
-    
-    // }
+  //   header('Location: ../Global/login.php');
+  
+  // }
 ?>
-<div class="text-center">
-
-  <h1>Diary</h1>
-  <br>
-</div>
-<a href="../AddPage/addLog.php">
-  <input  class="btn btn-light" name="submit" value = "Add new data" type="submit" id="mes"/> 
+<a href="../AddPage/addAcademic.php">
+  <input class="btn btn-light" name="submit" value = "Add Academic" type="submit" id="mes"/> 
   <!-- submit button -->
 </a>
-  <!-- Goes to editNews page -->
+<!-- Goes to editNews page -->
 
 <br><br>
-<div class="text-center">
+<centre>
 
-  <!-- Table to show the database data -->
-  <table id = "tabble" class="table">
-    <thead>
-      <tr>
-        <th>
-          S.N
-        </th>
-        <th>
-          Log
-        </th>
-        <th>
-          Date(YYYY-MM-DD)
-        </th>
-        <th>
-        Action
-        </th>
-      </tr>
-    </thead>
+<!-- Table to show the database data -->
+<table id = "tabble" class="table">
+<thead>
+  <tr>
+    <th>
+      UID
+    </th>
+    <th>
+      Full Name
+    </th>
+    <th>
+      Address
+    </th>
+    <th>
+      Contact
+    </th>
+    <th>
+      Role
+    </th>
+    <th>
+    Action
+    </th>
+  </tr>
+</thead>
 
-    <tbody>
+<tbody>
 
-    <?php //php code start
-      $connection = mysqli_connect("localhost","root",""); //connect database
-      $db = mysqli_select_db($connection,"web"); //select database
-      $sel = "select * from Logs where uid = " . $_SESSION['id']; //select table
-      $query = mysqli_query($connection, $sel); // run query from connected db
-      $data = mysqli_num_rows($query);
-      $i = 1;
-      while($res = mysqli_fetch_array($query)){  //loop to print all data
-        echo "<tr><td>" . $i . "</td><td>". $res['Log'] . "</td><td>" . $res['Date']. "<td><a href= '../DeletePage/deletelogCode.php?di=$res[did]' did='del'>Remove </td>" . "</tr>" ;
-        $i++;
-      }
-    ?>
-      <!-- php code end-->
-    </tbody>
-  </table>
-</div>
+</tbody>
+
+<?php //php code start
+
+
+ $connection = mysqli_connect("localhost","root",""); //connect database
+ $db = mysqli_select_db($connection,"web"); //select database
+ $sel = "select * from user"; //select table
+ $query = mysqli_query($connection, $sel); // run query from connected db
+ $data = mysqli_num_rows($query);
+
+    while($res = mysqli_fetch_array($query)){  //loop to print all data
+      echo "<tr><td>" . $res["u_id"]  . "</td><td>" . $res["u_name"].  "</td><td>". $res["address"]. "</td><td>". $res["contact"]. "</td><td>". $res["role"]. "</td><td><a href= '../DeletePage/deleteAcademicCode.php?di=$res[u_id]' id='del'>Remove</td>". "</tr>" ;
+  }
+?>
+<!-- php code end-->
+</table>
+</centre>
 </body>
 </html>
+
+

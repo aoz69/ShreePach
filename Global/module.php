@@ -61,6 +61,7 @@
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php" >Time Table</a>
+      <a class="nav-item nav-link" href="Academic.php">Academic</a>
       <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
     </div>
   </div>

@@ -57,9 +57,9 @@
       <a class="nav-item nav-link active" href="../Global/index.php" >Home </a>
       <a class="nav-item nav-link" href="../Global/Message.php" >Message</span></a>
       <a class="nav-item nav-link" href="../Global/course.php" id = "curr">Course</a>
-      <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php" >Time Table</a>
+      <a class="nav-item nav-link" href="Academic.php">Academic</a>
       <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
     </div>
   </div>
