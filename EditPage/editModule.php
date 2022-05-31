@@ -40,7 +40,7 @@
         </div>
         </nav>
 <div class="text-center">
-        <h1>Edit Time Table</h1>
+        <h1>Edit Module</h1>
 </div>
 <input type = " text" id = "new" name = "di" value = "<?php  echo $id; ?>"> </input>
         <br>
@@ -49,7 +49,6 @@
     session_start();
     $id = $_GET['di'];
     $_SESSION['getid'] = $id; //fetch id
-    echo $_SESSION['getid'];
     $connection = mysqli_connect("localhost","root",""); //connect database
     $db = mysqli_select_db($connection,"web"); //select database
     $sel = "select * from module where mid ='$id'"; //select table

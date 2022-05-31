@@ -70,6 +70,11 @@
 </div>
   <?php 
     session_start();
+    // if($SESSION['id'] = "" || empty($SESSION['id']) ){
+
+    //   header('Location: ../Global/login.php');
+    
+    // }
   if($_SESSION['role'] == "admin") { ?>
         <a href="../AddPage/addCourse.php">
     <input   class="btn btn-light" name="submit" value = "Add Course" type="submit" id="mes"/> 

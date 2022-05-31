@@ -54,15 +54,14 @@ session_start();
   <br>
 
   <?php
-        $name = $_SESSION['id'];
-        echo $name;
-        $uid  = intval($name);
-        $connection = mysqli_connect("localhost","root",""); //connect database
-        $db = mysqli_select_db($connection,"web"); //select database
-        $gel = 'select * from user where u_id= ' . $uid; 
-        $query = mysqli_query($connection, $gel); // run query from connected db
-        $res = mysqli_fetch_array($query);
-    ?>
+    $name = $_SESSION['id'];
+    $uid  = intval($name);
+    $connection = mysqli_connect("localhost","root",""); //connect database
+    $db = mysqli_select_db($connection,"web"); //select database
+    $gel = 'select * from user where u_id= ' . $uid; 
+    $query = mysqli_query($connection, $gel); // run query from connected db
+    $res = mysqli_fetch_array($query);
+  ?>
 
   <form action = "addLogCode.php" method = "post">
     <div class="form-group">
@@ -72,13 +71,13 @@ session_start();
     <div class="form-group">
       <h3><label for="exampleFormControlTextarea1" class="bonochi">Description</label></h3>
       <textarea name = "Log" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Log Description here"></textarea>
-      <select name="uid"><?php       
-            while ($tes = mysqli_fetch_array($query)){
-              $red = $tes['u_id'];
-              echo '<option value ="'. $red.'">' . $tes['u_name'] . '</option>';
-            }
-            ?>
-        </select>
+      <!-- <select name="uid"><?php       
+            // while ($tes = mysqli_fetch_array($query)){
+            //   $red = $tes['u_id'];
+            //   echo '<option value ="'. $red.'">' . $tes['u_name'] . '</option>';
+            // }
+            // ?>
+        </select> -->
     </div>
     <input  class="btn btn-light" type= "submit" name= "submit"  value = "Add"></input>
   </form>

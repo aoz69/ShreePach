@@ -77,6 +77,11 @@
 </div>
   <?php
   session_start();
+  // if($SESSION['id'] = "" || empty($SESSION['id']) ){
+
+  //   header('Location: ../Global/login.php');
+  
+  // }
   if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
       <a href="../AddPage/addMessage.php">
       <input  class="btn btn-light" name="submit" value = "Add new messages" type="submit" id="mes"/> 

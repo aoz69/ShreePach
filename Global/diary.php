@@ -60,10 +60,10 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.php" >Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#" id = "curr">Message</a>
+      <a class="nav-item nav-link" href="#" >Message</a>
       <a class="nav-item nav-link" href="course.php">Course</a>
       <a class="nav-item nav-link" href="grades.php">Grades</a>
-      <a class="nav-item nav-link" href="diary.php">Diary</a>
+      <a class="nav-item nav-link" href="diary.php"id = "curr">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
@@ -71,6 +71,11 @@
 </nav>
 <?php 
     session_start();
+    // if($SESSION['id'] = "" || empty($SESSION['id']) ){
+
+    //   header('Location: ../Global/login.php');
+    
+    // }
 ?>
 <div class="text-center">
 
@@ -108,7 +113,6 @@
     <tbody>
 
     <?php //php code start
-    echo $_SESSION['id'];
       $connection = mysqli_connect("localhost","root",""); //connect database
       $db = mysqli_select_db($connection,"web"); //select database
       $sel = "select * from Logs where uid = " . $_SESSION['id']; //select table
@@ -116,7 +120,7 @@
       $data = mysqli_num_rows($query);
       $i = 1;
       while($res = mysqli_fetch_array($query)){  //loop to print all data
-        echo "<tr><td>" . $i . "</td><td>". $res['Log'] . "</td><td>" . $res['Date']. "<td><a href= '../DeletePage/deletelogCode.php?di=$res[did]' did='del'>Remove </td>". "<td><a href= '../EditPage/editlog.php?di=$res[did]' did='edit'>Edit</td>" . "</tr>" ;
+        echo "<tr><td>" . $i . "</td><td>". $res['Log'] . "</td><td>" . $res['Date']. "<td><a href= '../DeletePage/deletelogCode.php?di=$res[did]' did='del'>Remove </td>" . "</tr>" ;
         $i++;
       }
     ?>

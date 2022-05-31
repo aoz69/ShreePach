@@ -69,7 +69,6 @@
         $query2 = mysqli_query($connection, $fel); // run query from connected db
         $query3 = mysqli_query($connection, $gel); // run query from connected db
         $query = mysqli_query($connection, $sel); // run query from connected db
-        $res = mysqli_fetch_array($query);
     ?>
 
     <div>

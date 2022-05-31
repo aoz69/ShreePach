@@ -37,6 +37,11 @@
 </nav>
 <?php //php code start
 session_start();
+// if($SESSION['check'] = true){
+
+//   header('Location: ../Global/login.php');
+// }
+
  $connection = mysqli_connect("localhost","root",""); //connect database
  $db = mysqli_select_db($connection,"web"); //select database
  $uid = (int) $_SESSION['id'];
