@@ -64,13 +64,16 @@
       <a class="nav-item nav-link" href="course.php">Course</a>
       <a class="nav-item nav-link" href="diary.php"id = "curr">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
-      <a class="nav-item nav-link" href="Academic.php">Academic</a>
+      <?php session_start();
+      if($_SESSION['role'] == "admin"){?>
+        <a class="nav-item nav-link" href="Academic.php" id = "curr">Academic</a>
+      <?php } ?>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
 </nav>
 <?php 
-    session_start();
+
     // if($SESSION['id'] = "" || empty($SESSION['id']) ){
 
     //   header('Location: ../Global/login.php');

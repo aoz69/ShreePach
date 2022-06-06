@@ -61,7 +61,11 @@
       <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php" >Time Table</a>
-      <a class="nav-item nav-link" href="Academic.php">Academic</a>
+      <?php 
+      session_start();
+      if($_SESSION['role'] == "admin"){?>
+        <a class="nav-item nav-link" href="Academic.php" id = "curr">Academic</a>
+      <?php } ?>
       <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
     </div>
   </div>
@@ -70,8 +74,8 @@
   <br>
   <h1>Modules</h1>
 </div>
+
   <?php 
-    session_start();
     // if($SESSION['id'] = "" || empty($SESSION['id']) ){
 
     //   header('Location: ../Global/login.php');
@@ -80,9 +84,16 @@
   if($_SESSION['role'] == "admin") { ?>
       <a href="../AddPage/addModule.php">
       <input   class="btn btn-light" name="submit" value = "Add Module" type="submit" id="mes"/> 
-      </a>
+      </a> <?php
+    }
+
+  if($_SESSION['role'] == "student") { ?>
+        <a href="../Global/submitAssignment.php">
+    <input   class="btn btn-light" name="submit" value = "Submit Assignment" type="submit" id="mes"/> 
+    </a>
     <?php
     }?>
+    
 <div class="text-center">
   <br><br>
   

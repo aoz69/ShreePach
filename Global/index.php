@@ -30,13 +30,17 @@
       <a class="nav-item nav-link" href="../Global/course.php">Course</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
-      <a class="nav-item nav-link" href="Academic.php">Academic</a>
+      <?php 
+      session_start();
+      if($_SESSION['role'] == "admin"){?>
+        <a class="nav-item nav-link" href="Academic.php">Academic</a>
+      <?php } ?>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
 </nav>
 <?php //php code start
-session_start();
+
 // if($SESSION['check'] = true){
 
 //   header('Location: ../Global/login.php');
