@@ -44,7 +44,9 @@
                 if($check['password'] == $_POST['password']){
                     $_SESSION['id'] = $check['u_id'];
                     $_SESSION['check'] = true;
-                    header("Location: ../Global/index.php");
+                    check = "true";
+                    $_SESSION['role'] == $check['role']
+                    header("Location:index.php");
                 }
             }
             else{

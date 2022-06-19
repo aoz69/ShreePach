@@ -37,7 +37,7 @@
       <a class="nav-item nav-link" href="../Global/course.php" >Course</a>
       <a class="nav-item nav-link" href="../Global/diary.php">Diary</a>
       <a class="nav-item nav-link" href="../Global/timeTable.php">Time Table</a>
-      <a class="nav-item nav-link" href="../Global/Academic.php"id = "curr">Academic</a>
+      <a class="nav-item nav-link" href="../Global/Academic.php"id = "curr">Academic > Add Academic</a>
       <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
     </div>
   </div>

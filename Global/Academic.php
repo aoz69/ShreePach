@@ -85,6 +85,14 @@
   
   // }
 ?>
+
+
+<div class="text-center">
+
+  <h1>Academic</h1>
+  <br>
+</div>
+
 <a href="../AddPage/addAcademic.php">
   <input class="btn btn-light" name="submit" value = "Add Academic" type="submit" id="mes"/> 
   <!-- submit button -->
@@ -125,6 +133,8 @@
 
 <?php //php code start
 
+
+/**TODO:: STUDENT different table, staff different table  and student ma course add garne */
 
  $connection = mysqli_connect("localhost","root",""); //connect database
  $db = mysqli_select_db($connection,"web"); //select database

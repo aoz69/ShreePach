@@ -64,7 +64,7 @@
       <?php 
       session_start();
       if($_SESSION['role'] == "admin"){?>
-        <a class="nav-item nav-link" href="Academic.php" id = "curr">Academic</a>
+        <a class="nav-item nav-link" href="Academic.php" >Academic</a>
       <?php } ?>
       <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
     </div>

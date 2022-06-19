@@ -41,10 +41,10 @@
 </nav>
 <?php //php code start
 
-// if($SESSION['check'] = true){
+if(check != "true"){
 
-//   header('Location: ../Global/login.php');
-// }
+  header('Location: ../Global/login.php');
+}
 
  $connection = mysqli_connect("localhost","root",""); //connect database
  $db = mysqli_select_db($connection,"web"); //select database

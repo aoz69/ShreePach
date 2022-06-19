@@ -67,7 +67,7 @@
       <?php 
       session_start();
       if($_SESSION['role'] == "admin"){?>
-        <a class="nav-item nav-link" href="Academic.php" id = "curr">Academic</a>
+        <a class="nav-item nav-link" href="Academic.php" >Academic</a>
       <?php } ?>
 
       <a class="nav-item nav-link" href="logout.php">Logout</a>
@@ -86,6 +86,12 @@
   
   // }
 
+?>
+<div class="text-center">
+  <h1>Time Table</h1>
+  <br>
+</div>
+<?php
 if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
 <a href="../AddPage/addTimeTable.php">
   <input class="btn btn-light" name="submit" value = "Add Time Table" type="submit" id="mes"/> 

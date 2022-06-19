@@ -37,11 +37,13 @@ session_start();
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="../Global/index.php">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="../Global/message.php" id = "curr">Message</a>
+      <a class="nav-item nav-link" href="../Global/message.php" id = "curr">Message > Add Message</a>
       <a class="nav-item nav-link" href="../Global/course.php">Course</a>
-      <a class="nav-item nav-link" href="../Global/grades.php">Grades</a>
       <a class="nav-item nav-link" href="../Global/diary.php">Diary</a>
       <a class="nav-item nav-link" href="../Global/timeTable.php">Time Table</a>
+      <?php if($_SESSION['role'] == "admin"){?>
+      <a class="nav-item nav-link" href="../Global/Academic.php">Academic</a>
+      <?php } ?>
       <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
     </div>
   </div>
