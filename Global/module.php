@@ -58,7 +58,6 @@
       <a class="nav-item nav-link active" href="../Global/index.php" >Home </a>
       <a class="nav-item nav-link" href="../Global/Message.php" >Message</span></a>
       <a class="nav-item nav-link" href="../Global/course.php" id = "curr">Course > Module</a>
-      <a class="nav-item nav-link" href="grades.php">Grades</a>
       <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php" >Time Table</a>
       <?php 
@@ -76,11 +75,10 @@
 </div>
 
   <?php 
-    // if($SESSION['id'] = "" || empty($SESSION['id']) ){
+if($_SESSION['check'] != true){
 
-    //   header('Location: ../Global/login.php');
-    
-    // }
+  header('Location: ../Global/login.php');
+}
   if($_SESSION['role'] == "admin") { ?>
       <a href="../AddPage/addModule.php">
       <input   class="btn btn-light" name="submit" value = "Add Module" type="submit" id="mes"/> 

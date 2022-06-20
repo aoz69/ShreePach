@@ -36,9 +36,8 @@ session_start();
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="../Global/index.php">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="../Global/message.php" id = "curr">Message</a>
-      <a class="nav-item nav-link" href="../Global/course.php">Course</a>
-      <a class="nav-item nav-link" href="../Global/grades.php">Grades</a>
+      <a class="nav-item nav-link" href="../Global/message.php" >Message</a>
+      <a class="nav-item nav-link" href="../Global/course.php" id = "curr">Course > Modules > Assignment</a>
       <a class="nav-item nav-link" href="../Global/diary.php">Diary</a>
       <a class="nav-item nav-link" href="../Global/timeTable.php">Time Table</a>
       <a class="nav-item nav-link" href="../Global/logout.php">Logout</a>
@@ -52,16 +51,18 @@ session_start();
   <br>
   <br>
 
-  <form action = "addMessageCode.php" method = "post"  >
+  <form action = "../AddPage/submitAssignmentCode.php" method = "post" enctype="multipart/form-data" >
     <div class="form-group">
     <h3><label for="exampleFormControlInput1" class="bonochi">Title</label></h3>
       <input name = "Heading" class="form-control" id="exampleFormControlInput1"  placeholder="News Heading here"   required> 
     </div>
     <div class="form-group">
       <h3><label for="exampleFormControlTextarea1" class="bonochi">Assignment Description</label></h3>
-      <textarea name = "Message" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="News Description here"></textarea>
+      <textarea name = "Desc" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="News Description here"></textarea>
     </div>
+    <input type="file" name ="file" class="form-control" id="customFile"/> <br>
     <input  class="btn btn-light" type= "submit" name= "submit"  value = "Add"></input>
+    
   </form>
 </div>
 </body>

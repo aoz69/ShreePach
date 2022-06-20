@@ -127,6 +127,10 @@
   </tbody>
 
   <?php //php code start
+  if($_SESSION['check'] != true){
+
+    header('Location: ../Global/login.php');
+  }
 
   $connection = mysqli_connect("localhost","root",""); //connect database
   $db = mysqli_select_db($connection,"web"); //select database

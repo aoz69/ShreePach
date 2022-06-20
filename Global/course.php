@@ -72,11 +72,10 @@
   <h1>Courses</h1>
 </div>
   <?php 
-    // if($SESSION['id'] = "" || empty($SESSION['id']) ){
+if($_SESSION['check'] != true){
 
-    //   header('Location: ../Global/login.php');
-    
-    // }
+  header('Location: ../Global/login.php');
+}
   if($_SESSION['role'] == "admin") { ?>
         <a href="../AddPage/addCourse.php">
     <input   class="btn btn-light" name="submit" value = "Add Course" type="submit" id="mes"/> 

@@ -6,15 +6,15 @@
     
 
     if(isset($_POST['submit'])){
-        $did = $_SESSION['id'];
-        $date = $_POST['Date'];
-        $log = $_POST['Log'];
-        $query = "insert into logs(Log, Date, uid) values( '$log' , '$date' , '$did')";
+        $head = $_POST['Heading'];
+        $msg = $_POST['Desc'];
+        $file = $_FILES;
+        $query = "insert into assignment(Heading, Description, file) values('$head' , '$msg' , '$file')";
         $query_run = mysqli_query($connection,$query); 
 
     if($query_run){
     }
-     header('Location: ../Global/diary.php');
+     header('Location: ../Global/submitAssignment.php');
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ADDING DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 

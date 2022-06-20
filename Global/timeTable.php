@@ -80,11 +80,10 @@
 
 
 <?php 
-  // if($SESSION['id'] = "" || empty($SESSION['id']) ){
+if($_SESSION['check'] != true){
 
-  //   header('Location: ../Global/login.php');
-  
-  // }
+  header('Location: ../Global/login.php');
+}
 
 ?>
 <div class="text-center">

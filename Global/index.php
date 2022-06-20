@@ -41,7 +41,7 @@
 </nav>
 <?php //php code start
 
-if(check != "true"){
+if($_SESSION['check'] != true){
 
   header('Location: ../Global/login.php');
 }
