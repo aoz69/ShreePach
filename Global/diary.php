@@ -116,7 +116,7 @@
     <tbody>
 
     <?php //php code start
-    if($_SESSION['check'] != true){
+    if($_SESSION['check'] != true){ // checks if user has logged in
 
       header('Location: ../Global/login.php');
     }
@@ -128,7 +128,7 @@
       $i = 1;
       while($res = mysqli_fetch_array($query)){  //loop to print all data
         echo "<tr><td>" . $i . "</td><td>". $res['Log'] . "</td><td>" . $res['Date']. "<td><a href= '../DeletePage/deletelogCode.php?di=$res[did]' did='del'>Remove </td>" . "</tr>" ;
-        $i++;
+        $i++; //increments value of i for S.N
       }
     ?>
       <!-- php code end-->

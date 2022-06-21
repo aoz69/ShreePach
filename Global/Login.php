@@ -29,27 +29,27 @@
     </form>
 
     <?php
-    session_start();
-    $_SESSION['check'] = false;
+    session_start(); // session start
+    $_SESSION['check'] = false; //check variable set to false in session
     $user = "";
-    if(isset($_POST['submit'])){
-        $connection = mysqli_connect("localhost","root","");
-        $db = mysqli_select_db($connection,"web");
-        $query = "SELECT * FROM user WHERE u_id = '$_POST[id]'";
-        $run = mysqli_query($connection , $query);
+    if(isset($_POST['submit'])){ // checks if button is clicked
+        $connection = mysqli_connect("localhost","root",""); //db connect
+        $db = mysqli_select_db($connection,"web"); // database we connected
+        $query = "SELECT * FROM user WHERE u_id = '$_POST[id]'"; //database query to get users from id
+        $run = mysqli_query($connection , $query); //run query 
         
-        while($check = mysqli_fetch_assoc($run)){
+        while($check = mysqli_fetch_assoc($run)){ //loop for checking every id in database
 
-            if($check['u_id'] == $_POST['id']){
-                if($check['password'] == $_POST['password']){
-                    $_SESSION['id'] = $check['u_id'];
-                    $_SESSION['check'] = true;
-                    $_SESSION['role'] = $check['role'];
-                    header("Location:index.php");
+            if($check['u_id'] == $_POST['id']){ //checks if user entered id matches database id
+                if($check['password'] == $_POST['password']){//checks if user entered passoword matches database password
+                    $_SESSION['id'] = $check['u_id']; // store id value in session 
+                    $_SESSION['check'] = true; // store check value in session
+                    $_SESSION['role'] = $check['role']; //store role value in session
+                    header("Location:index.php"); //openindex page
                 }
             }
             else{
-                echo '<script>alert("INVALID DATA")</script>';
+                echo '<script>alert("INVALID DATA")</script>'; // if the data is incorrect error message poops up
                 
             }
         }

@@ -41,27 +41,27 @@
 </nav>
 <?php //php code start
 
-if($_SESSION['check'] != true){
+if($_SESSION['check'] != true){ // checks if check is true or not, if it is true then login and show index page, if its false then head back to login page
 
   header('Location: ../Global/login.php');
 }
 
  $connection = mysqli_connect("localhost","root",""); //connect database
  $db = mysqli_select_db($connection,"web"); //select database
- $uid = (int) $_SESSION['id'];
+ $uid = (int) $_SESSION['id']; //put uid value same as the id value passwed from login with session
  $sel = "select u_id, role, u_name from user WHERE u_id =  $uid" ; //select table
  $query = mysqli_query($connection, $sel); // run query from connected db
- $data = mysqli_num_rows($query);
- $res = mysqli_fetch_array($query);
- $_SESSION['role'] = $res["role"] ;
- $_SESSION['u_name'] = $res["u_name"] ;
+ $data = mysqli_num_rows($query);// get number of rows
+ $res = mysqli_fetch_array($query);// get arrys from db
+ $_SESSION['role'] = $res["role"] ; // store session role as res role
+ $_SESSION['u_name'] = $res["u_name"] ;// store uname as res uname
 ?>
 
 
 
 <div class="text-center">
 
- <h1 id = "ji"> Hello <?php  echo $_SESSION['u_name'];?><h1>
+ <h1 id = "ji"> Hello <?php  echo $_SESSION['u_name'];?><h1>  <!--//displays name of logged in user with the help of session -->
                      
      <br> <br>
     <h1> Message</h1>

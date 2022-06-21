@@ -89,8 +89,8 @@
     <label>Tutor</label>
         <select name="uid"><?php       
             while ($tes = mysqli_fetch_array($query3)){
-              $red = $tes['u_id'];
-              echo '<option value ="'. $red.'">' . $tes['u_name'] . '</option>';
+              $fed = $tes['u_id'];
+              echo '<option value ="'. $fed.'">' . $tes['u_name'] . '</option>';
             }
             ?>
         </select>

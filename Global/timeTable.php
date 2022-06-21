@@ -91,7 +91,7 @@ if($_SESSION['check'] != true){
   <br>
 </div>
 <?php
-if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
+if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') {  //shows only if user has admin or teacher role?>
 <a href="../AddPage/addTimeTable.php">
   <input class="btn btn-light" name="submit" value = "Add Time Table" type="submit" id="mes"/> 
   <!-- submit button -->
@@ -125,7 +125,7 @@ if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
     <th>
       FRI
     </th>
-    <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
+    <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') {  //shows only if user has admin or teacher role?>
     <th>
     Action
     </th>
@@ -148,7 +148,7 @@ if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
  $data = mysqli_num_rows($query);
 
 
-if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){
+if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){ //shows only if user has admin or teacher role
   while($res = mysqli_fetch_array($query)){  //loop to print all data
     echo "<tr><td>" . $res["Time"]  . "</td><td>" . $res["MON"].  "</td><td>". $res["TUE"]. "</td><td>". $res["WED"]. "</td><td>". $res["THU"]. "</td><td>". $res["FRI"]. "<td><a href= '../DeletePage/deleteTimeTableCode.php?di=$res[id]' id='del'>Remove </td>" . "</td><td>". "<td><a href= '../EditPage/editTimeTable.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
 }

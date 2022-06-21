@@ -73,13 +73,6 @@ session_start();
     <div class="form-group">
       <h3><label for="exampleFormControlTextarea1" class="bonochi">Description</label></h3>
       <textarea name = "Log" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Log Description here"></textarea>
-      <!-- <select name="uid"><?php       
-            // while ($tes = mysqli_fetch_array($query)){
-            //   $red = $tes['u_id'];
-            //   echo '<option value ="'. $red.'">' . $tes['u_name'] . '</option>';
-            // }
-            // ?>
-        </select> -->
     </div>
     <input  class="btn btn-light" type= "submit" name= "submit"  value = "Add"></input>
   </form>

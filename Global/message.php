@@ -65,7 +65,7 @@
       <a class="nav-item nav-link" href="diary.php">Diary</a>
       <a class="nav-item nav-link" href="timeTable.php">Time Table</a>
       <?php session_start();
-      if($_SESSION['role'] == "admin"){?>
+      if($_SESSION['role'] == "admin"){ //shows only if user has admin role?>
         <a class="nav-item nav-link" href="Academic.php">Academic</a>
       <?php } ?>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
@@ -79,13 +79,7 @@
   <br>
 </div>
   <?php
-
-  // if($SESSION['id'] = "" || empty($SESSION['id']) ){
-
-  //   header('Location: ../Global/login.php');
-  
-  // }
-  if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
+  if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { //shows only if user has admin or teacher role?>
       <a href="../AddPage/addMessage.php">
       <input  class="btn btn-light" name="submit" value = "Add new messages" type="submit" id="mes"/> 
       <!-- submit button -->
@@ -113,7 +107,7 @@
       <th>
         Message
       </th>
-      <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?>
+      <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') { ?> <!--// shows only if user is either admin or teacher-->
       <th>
       Action
       </th>
@@ -127,7 +121,7 @@
   </tbody>
 
   <?php //php code start
-  if($_SESSION['check'] != true){
+  if($_SESSION['check'] != true){// checks if check is true or not, if it is true then login and show index page, if its false then head back to login page
 
     header('Location: ../Global/login.php');
   }
@@ -138,15 +132,16 @@
   $query = mysqli_query($connection, $sel); // run query from connected db
   $data = mysqli_num_rows($query);
 
-  $i = 1;
-  if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){
+  $i = 1; //i variable as 1
+  if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){ // only show if logged in user is either admin or teacher
   while($res = mysqli_fetch_array($query)){  //loop to print all data
     echo "<tr><td>" . $i . "</td><td>". $res['Heading'] . "</td><td>" . $res['Message']. "<td><a href= '../DeletePage/deleteMessageCode.php?di=$res[id]' id='del'>Remove </td>". "<td><a href= '../EditPage/editMessage.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
-  $i++;
+  //prints i variable as id, Heading and Message as same as database, edit and remove button 
+    $i++; //increases value of i for id
   }
   }
 
-  else{
+  else{ //if the user is a student then display the following which has no edit and delete button
     while($res = mysqli_fetch_array($query)){  //loop to print all data
       echo "<tr><td>" . $i . "</td><td>". $res["Heading"] . "</td><td>" . $res["Message"].  "</td><td>"."</td></tr>" ;
     $i++;

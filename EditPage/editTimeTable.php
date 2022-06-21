@@ -54,10 +54,7 @@
   $sel = "select * from timttable where id ='$id'"; //select table
   $query = mysqli_query($connection, $sel); // run query from connected db
   $data = mysqli_num_rows($query);
-
-  $res = mysqli_fetch_array($query)
-
-
+  $res = mysqli_fetch_array($query);
   ?>
   <span id="new"> <?php  echo $id; ?></span>
 

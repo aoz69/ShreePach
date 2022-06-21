@@ -79,7 +79,7 @@
 
 <?php 
 
-if($_SESSION['check'] != true){
+if($_SESSION['check'] != true){ //checks if user has logged in
 
   header('Location: ../Global/login.php');
 }
@@ -131,9 +131,6 @@ if($_SESSION['check'] != true){
 </tbody>
 
 <?php //php code start
-
-
-/**TODO:: STUDENT different table, staff different table  and student ma course add garne */
 
  $connection = mysqli_connect("localhost","root",""); //connect database
  $db = mysqli_select_db($connection,"web"); //select database

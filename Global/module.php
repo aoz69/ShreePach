@@ -115,7 +115,7 @@ if($_SESSION['check'] != true){
       <th>
         Tutor
       </th>
-      <?php if($_SESSION['role'] == "admin") { ?>
+      <?php if($_SESSION['role'] == "admin") { //checks if user loggedin has admin role or not?>
       <th>
       Action
       </th>
@@ -133,7 +133,8 @@ if($_SESSION['check'] != true){
   $connection = mysqli_connect("localhost","root",""); //connect database
   $db = mysqli_select_db($connection,"web"); //select database
   $sel = "select * from module "; //select table
-  $fel = 'select * from module INNER JOIN 
+  $fel = 'select * from module 
+  INNER JOIN 
   course course_id ON module.course_id=cid
   INNER JOIN  
   user staff_id ON module.staff_id = u_id'; //select table

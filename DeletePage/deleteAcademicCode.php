@@ -7,7 +7,7 @@
     $query_run = mysqli_query($connection,$query); // run query
 
     if($query_run){ // after the delete function works stop increment and load message page
-     header('Location: ../Global/Acedemic.php'); //head to message page
+     header('Location: ../Global/Academic.php'); //head to message page
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Delete DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?>

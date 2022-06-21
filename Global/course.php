@@ -72,11 +72,11 @@
   <h1>Courses</h1>
 </div>
   <?php 
-if($_SESSION['check'] != true){
+if($_SESSION['check'] != true){// checks if check variable is true or not, if it is true then show course page, if its false then head back to login page
 
   header('Location: ../Global/login.php');
 }
-  if($_SESSION['role'] == "admin") { ?>
+  if($_SESSION['role'] == "admin") { // checks if user has admin role, displayes the button only ig the user is admin?> 
         <a href="../AddPage/addCourse.php">
     <input   class="btn btn-light" name="submit" value = "Add Course" type="submit" id="mes"/> 
     </a>
@@ -103,7 +103,7 @@ if($_SESSION['check'] != true){
       <th>
         Duration
       </th>
-      <?php if($_SESSION['role'] == "admin") { ?>
+      <?php if($_SESSION['role'] == "admin") { ?><!--// shows only if user is either admin -->
       <th>
       Action
       </th>
@@ -125,7 +125,7 @@ if($_SESSION['check'] != true){
   $data = mysqli_num_rows($query);
 
 
-  if($_SESSION['role'] == "admin"){
+  if($_SESSION['role'] == "admin"){ // checks if user has role admin
     while($res = mysqli_fetch_array($query)){  //loop to print all data
     echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "</td><td><a href= '../DeletePage/deleteCourseCode.php?di=$res[cid]' id='del'>Remove". "</td><td><a href= '../EditPage/editCourse.php?di=$res[cid]' id='edit'>Edit</td>" . "</tr>" ;
   }

@@ -3,16 +3,16 @@
     $connection = mysqli_connect("localhost","root",""); //connect database
     $db = mysqli_select_db($connection,"web"); //select database
 
-    if(isset($_POST['submit'])){
-        $code = $_POST['cid'];
-        $name = $_POST['name'];
-        $crh = $_POST['hours'];
-        $query = "INSERT INTO `course` (`cid`, `name`, `Duration`) VALUES ('$code', '$name', '$crh');";
+    if(isset($_POST['submit'])){ //checkes if button is clicked
+        $code = $_POST['cid']; //gets id from form
+        $name = $_POST['name']; //gets name from form
+        $crh = $_POST['hours']; //gets hours from form
+        $query = "INSERT INTO `course` (`cid`, `name`, `Duration`) VALUES ('$code', '$name', '$crh');"; //sql insert command to add values to database
         $query_run = mysqli_query($connection,$query); 
 
-    if($query_run){
+    if($query_run){ //checks if the code has been executed
     }
-     header('Location:../Global/course.php');
+     header('Location:../Global/course.php'); //retuens to course page
     }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ADDING DATA xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ?> 
