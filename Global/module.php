@@ -132,7 +132,8 @@ if($_SESSION['check'] != true){
 
   $connection = mysqli_connect("localhost","root",""); //connect database
   $db = mysqli_select_db($connection,"web"); //select database
-  $sel = "select * from module "; //select table
+  $sel = "select * from module "; //select table module
+  //select course id from module table and staff id from staff table using foreign key 
   $fel = 'select * from module 
   INNER JOIN 
   course course_id ON module.course_id=cid
