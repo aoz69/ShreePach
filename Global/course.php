@@ -36,6 +36,11 @@
   }
 </style> 
 <!-- CSS -->
+<script>
+  function alert(){
+    return confirm('are you sure you want to delete the message');
+  }
+</script>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -127,7 +132,7 @@ if($_SESSION['check'] != true){// checks if check variable is true or not, if it
 
   if($_SESSION['role'] == "admin"){ // checks if user has role admin
     while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "</td><td><a href= '../DeletePage/deleteCourseCode.php?di=$res[cid]' id='del'>Remove". "</td><td><a href= '../EditPage/editCourse.php?di=$res[cid]' id='edit'>Edit</td>" . "</tr>" ;
+    echo "<tr><td>" . $res["cid"] . "</td><td>". $res["name"] . "</td><td>" . $res["Duration"]. "</td><td><a href= '../DeletePage/deleteCourseCode.php?di=$res[cid]'.  onclick='return alert()'. id='del'>Remove". "</td><td><a href= '../EditPage/editCourse.php?di=$res[cid]' id='edit'>Edit</td>" . "</tr>" ;
   }
   }
     else {

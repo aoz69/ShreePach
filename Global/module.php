@@ -36,6 +36,11 @@
   }
 </style> 
 <!-- CSS -->
+<script>
+  function alert(){
+    return confirm('are you sure you want to delete the message');
+  }
+</script>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -147,7 +152,7 @@ if($_SESSION['check'] != true){
   if($_SESSION['role'] == "admin"){
     while($res = mysqli_fetch_array($query)){  //loop to print all data
       $reso = mysqli_fetch_array($query2);
-      echo "<tr><td>" . $res["mid"] . "</td><td>". $res["name"] .  "</td><td>" . $res["credit hours"] .  "</td><td>" . $reso["name"] ."</td><td>" . $reso["u_name"] .  "</td><td><a href= '../DeletePage/deleteModuleCode.php?di=$res[mid]' id='del'>Remove". "<td><a href= '../EditPage/editModule.php?di=$res[mid]' id='edit'>Edit</td>" . "</tr>" ;
+      echo "<tr><td>" . $res["mid"] . "</td><td>". $res["name"] .  "</td><td>" . $res["credit hours"] .  "</td><td>" . $reso["name"] ."</td><td>" . $reso["u_name"] .  "</td><td><a href= '../DeletePage/deleteModuleCode.php?di=$res[mid]' .  onclick='return alert()'. id='del'>Remove". "<td><a href= '../EditPage/editModule.php?di=$res[mid]' id='edit'>Edit</td>" . "</tr>" ;
     }
   }
 

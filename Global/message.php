@@ -41,10 +41,17 @@
   }
 </style>
 <!-- CSS -->
+<script>
+  function alert(){
+    return confirm('are you sure you want to delete the message');
+  }
+</script>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -135,7 +142,7 @@
   $i = 1; //i variable as 1
   if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){ // only show if logged in user is either admin or teacher
   while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $i . "</td><td>". $res['Heading'] . "</td><td>" . $res['Message']. "<td><a href= '../DeletePage/deleteMessageCode.php?di=$res[id]' id='del'>Remove </td>". "<td><a href= '../EditPage/editMessage.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
+    echo "<tr><td>" . $i . "</td><td>". $res['Heading'] . "</td><td>" . $res['Message']. "<td><a href= '../DeletePage/deleteMessageCode.php?di=$res[id]'.  onclick='return alert()'.  id='del'>Remove </td>". "<td><a href= '../EditPage/editMessage.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
   //prints i variable as id, Heading and Message as same as database, edit and remove button 
     $i++; //increases value of i for id
   }

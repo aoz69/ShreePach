@@ -41,6 +41,11 @@
   }
 </style>
 <!-- CSS -->
+<script>
+  function alert(){
+    return confirm('are you sure you want to delete the message');
+  }
+</script>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -150,7 +155,7 @@ if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher') {  //shows on
 
 if($_SESSION['role'] == "admin" || $_SESSION['role'] == 'teacher'){ //shows only if user has admin or teacher role
   while($res = mysqli_fetch_array($query)){  //loop to print all data
-    echo "<tr><td>" . $res["Time"]  . "</td><td>" . $res["MON"].  "</td><td>". $res["TUE"]. "</td><td>". $res["WED"]. "</td><td>". $res["THU"]. "</td><td>". $res["FRI"]. "<td><a href= '../DeletePage/deleteTimeTableCode.php?di=$res[id]' id='del'>Remove </td>" . "</td><td>". "<td><a href= '../EditPage/editTimeTable.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
+    echo "<tr><td>" . $res["Time"]  . "</td><td>" . $res["MON"].  "</td><td>". $res["TUE"]. "</td><td>". $res["WED"]. "</td><td>". $res["THU"]. "</td><td>". $res["FRI"]. "<td><a href= '../DeletePage/deleteTimeTableCode.php?di=$res[id]' .  onclick='return alert()'. id='del'>Remove </td>" . "</td><td>". "<td><a href= '../EditPage/editTimeTable.php?di=$res[id]' id='edit'>Edit</td>" . "</tr>" ;
 }
  }
   else {
